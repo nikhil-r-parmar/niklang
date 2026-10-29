@@ -12,19 +12,19 @@ int main () {
 
     string command = "bol";     // command is a string variable that stores 'bol'.
 
-    cout << "Command: " << command << endl; 
+    // cout << "Command: " << command << endl; 
 
 
-    if (command == "bol") {
-        cout << "NikLang Output Command Detected!" << endl; 
-    } else {
-        cout << "Unknown NikLang Command" << endl;
-    }
+    // if (command == "bol") {
+    //     cout << "NikLang Output Command Detected!" << endl; 
+    // } else {
+    //     cout << "Unknown NikLang Command" << endl;
+    // }
 
     ifstream MyFile("./examples/hello.nik");
 
     if (MyFile) {
-        cout << "File Opend Successfully!" << endl;
+        // cout << "File Opend Successfully!" << endl;
 
         string line;
 
@@ -78,7 +78,7 @@ int main () {
 
                     int leftNumber = stoi(variables[leftSide]);
                     int rightNumber = stoi(variables[rightSide]);
-                    cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+                    // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
                     int result = leftNumber - rightNumber;
 
@@ -88,7 +88,7 @@ int main () {
                 variables[varName] = varValue;
                 // cout << "Stored value: " << variables[varName] << endl;
 
-                cout << varName << " = " << variables[varName] << endl;
+                // cout << varName << " = " << variables[varName] << endl;
             }
         }
     } else {

@@ -1,9 +1,9 @@
 include "nicky_p"
 
 maanlo name = puch("Tera name kya hai? : ")
-maanlo score = 100
+maanlo score = 75
 maanlo backup = score
-maanlo discount = 20
+maanlo discount = 25
 maanlo saved = discount
 maanlo total = score - discount
 
