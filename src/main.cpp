@@ -58,7 +58,12 @@ int main () {
 
                     string final = varValue.substr(firstQuote+1, secondQuote-firstQuote-1);
 
-                    cout << final << endl;
+                    cout << final;
+
+                    string userInput;
+                    cin >> userInput;
+                    
+                    varValue = userInput;
                 }
 
                 if (variables.find(varValue) != variables.end()) {
