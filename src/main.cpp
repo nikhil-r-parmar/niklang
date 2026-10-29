@@ -36,8 +36,15 @@ int main () {
                 int secondQuote = line.find('"',firstQuote + 1);
 
                 string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
+                
+                if (line.find("+") != string::npos) {
+                    int plusPos = line.find("+");
+                    string variableName = line.substr(plusPos+2);
 
-                // cout << final << endl;
+                    cout << final << variables[variableName] << endl;
+                } else {
+                    cout << final << endl;
+                }
             }
 
             if(line.find("maanlo ") == 0) {

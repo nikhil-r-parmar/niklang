@@ -1,5 +1,7 @@
 include "nicky_p"
 
+bol "Hello NIKLANG"
+
 maanlo name = puch("Tera name kya hai? : ")
 maanlo score = 75
 maanlo backup = score
