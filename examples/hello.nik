@@ -5,6 +5,7 @@ maanlo score = 100
 maanlo backup = score
 maanlo discount = 20
 maanlo saved = discount
+maanlo total = score - discount
 
 bol "Welcome to NIKLANG!, " + name
 bol "Your score: " + total

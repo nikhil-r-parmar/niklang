@@ -51,8 +51,33 @@ int main () {
                 string varValue = line.substr(varValueStart+2);
                 // cout << varValue << endl;
 
+                if (varValue.find("puch(") != string::npos) {
+
+                    int firstQuote = varValue.find('"');
+                    int secondQuote = varValue.find('"', firstQuote+1);
+
+                    string final = varValue.substr(firstQuote+1, secondQuote-firstQuote-1);
+
+                    cout << final << endl;
+                }
+
                 if (variables.find(varValue) != variables.end()) {
                     varValue = variables[varValue];
+                }
+
+                if (varValue.find("-") != string::npos) {
+                    cout << "Minus operator found!" << endl;
+                    int minus = varValue.find("-");
+                    string leftSide = varValue.substr(0, minus-1);
+                    string rightSide = varValue.substr(minus+2);
+
+                    int leftNumber = stoi(variables[leftSide]);
+                    int rightNumber = stoi(variables[rightSide]);
+                    cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+
+                    int result = leftNumber - rightNumber;
+
+                    varValue = to_string(result);
                 }
 
                 variables[varName] = varValue;
