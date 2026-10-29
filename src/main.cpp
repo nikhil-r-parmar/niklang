@@ -1,0 +1,69 @@
+#include<iostream>
+#include<string>
+#include<fstream>   
+#include<map>
+using namespace std;
+
+int main () {
+    
+    map<string, string> variables;
+
+    cout << "NIKLANG Interpreter started!" << endl;
+
+    string command = "bol";     // command is a string variable that stores 'bol'.
+
+    cout << "Command: " << command << endl; 
+
+
+    if (command == "bol") {
+        cout << "NikLang Output Command Detected!" << endl; 
+    } else {
+        cout << "Unknown NikLang Command" << endl;
+    }
+
+    ifstream MyFile("./examples/hello.nik");
+
+    if (MyFile) {
+        cout << "File Opend Successfully!" << endl;
+
+        string line;
+
+        while(getline(MyFile, line)) {
+            
+            if(line.find("bol") == 0) {
+
+                int firstQuote = line.find('"');
+                int secondQuote = line.find('"',firstQuote + 1);
+
+                string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
+
+                // cout << final << endl;
+            }
+
+            if(line.find("maanlo ") == 0) {
+
+                int varNameStart = line.find(" ");
+                int varNameEnd = line.find(" =", varNameStart+1);
+                string varName = line.substr(varNameStart+1, (varNameEnd-varNameStart-1));
+                // cout << varName << endl;
+
+                int varValueStart = line.find("= ");
+                string varValue = line.substr(varValueStart+2);
+                // cout << varValue << endl;
+
+                if (variables.find(varValue) != variables.end()) {
+                    varValue = variables[varValue];
+                }
+
+                variables[varName] = varValue;
+                // cout << "Stored value: " << variables[varName] << endl;
+
+                cout << varName << " = " << variables[varName] << endl;
+            }
+        }
+    } else {
+        cout << "Could not open the file!" << endl;
+    }
+
+    return 0;
+}

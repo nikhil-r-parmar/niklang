@@ -1,0 +1,19 @@
+include "nicky_p"
+
+maanlo name = puch("Tera name kya hai? : ")
+maanlo score = 100
+maanlo backup = score
+maanlo discount = 20
+maanlo saved = discount
+
+bol "Welcome to NIKLANG!, " + name
+bol "Your score: " + total
+
+agar score >= 90 {
+    bol "Full Aura!"
+} warna {
+    bol "Grind mode!"
+}
+
+kyu score
+kyu (score >= 90)
