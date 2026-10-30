@@ -39,7 +39,9 @@ int main () {
                 
                 if (line.find("+") != string::npos) {
                     int plusPos = line.find("+");
-                    string variableName = line.substr(plusPos+2);
+                    int variableStart = line.find_first_not_of(" ", plusPos+1);
+                    int variableEnd = line.find_last_not_of(" ");  
+                    string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
                     cout << final << variables[variableName] << endl;
                 } else {

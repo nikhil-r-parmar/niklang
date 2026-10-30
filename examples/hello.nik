@@ -11,6 +11,7 @@ maanlo total = score - discount
 
 bol "Welcome to NIKLANG!, " + name
 bol "Your score: " + total
+bol "Your score: "   +    total
 
 agar score >= 90 {
     bol "Full Aura!"
@@ -20,3 +21,8 @@ agar score >= 90 {
 
 kyu score
 kyu (score >= 90)
+
+bol "Test 1: " + total
+bol "Test 2: "    +    total
+bol "Test 3: " + total    
+bol "Test 4: "    +    total    
