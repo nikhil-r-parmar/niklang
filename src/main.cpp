@@ -70,7 +70,7 @@ int main () {
                     cout << final;
 
                     string userInput;
-                    cin >> userInput;
+                    getline(cin, userInput);
                     
                     varValue = userInput;
                 }
