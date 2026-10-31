@@ -87,18 +87,32 @@ int main () {
                 }
 
                 if (varValue.find("-") != string::npos) {
-                    cout << "Minus operator found!" << endl;
+                    int leftNumber, rightNumber;
+
                     int minus = varValue.find("-");
                     string leftSide = varValue.substr(0, minus-1);
                     string rightSide = varValue.substr(minus+2);
 
-                    int leftNumber = stoi(variables[leftSide]);
-                    int rightNumber = stoi(variables[rightSide]);
-                    // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                        leftNumber = stoi(variables[leftSide]);
+                        rightNumber = stoi(variables[rightSide]);
+                        // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                    int result = leftNumber - rightNumber;
+                        int result = leftNumber - rightNumber;
+                        varValue = to_string(result);
 
-                    varValue = to_string(result);
+                    }
+
+                    if(variables.find(leftSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
+
+                    }
+
+                    if(variables.find(rightSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
+
+                    }
+
                 }
 
                 variables[varName] = varValue;
