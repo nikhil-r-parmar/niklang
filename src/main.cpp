@@ -43,7 +43,14 @@ int main () {
                     int variableEnd = line.find_last_not_of(" ");  
                     string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
-                    cout << final << variables[variableName] << endl;
+                    if (variables.find(variableName) != variables.end()) {
+                        string variableValue = variables[variableName];
+
+                        cout << final << variableValue << endl;
+                    } else {
+                        cout << "NIKLANG ERROR : variable '" << variableName << "' is not defined!" << endl;
+                    }
+
                 } else {
                     cout << final << endl;
                 }
