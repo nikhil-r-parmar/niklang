@@ -3,7 +3,7 @@ include "nicky_p"
 bol "Hello NIKLANG"
 
 maanlo name = puch("Tera name kya hai? : ")
-maanlo score = 75
+maanlo score = "Nikhil"
 maanlo backup = score
 maanlo discount = 25
 maanlo saved = discount

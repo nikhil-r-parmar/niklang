@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>   
 #include<map>
+#include<stdexcept>
 using namespace std;
 
 int main () {
@@ -58,6 +59,7 @@ int main () {
 
             if(line.find("maanlo ") == 0) {
 
+                bool calculationSuccessful = true;
                 int varNameStart = line.find(" ");
                 int varNameEnd = line.find(" =", varNameStart+1);
                 string varName = line.substr(varNameStart+1, (varNameEnd-varNameStart-1));
@@ -94,13 +96,22 @@ int main () {
                     string rightSide = varValue.substr(minus+2);
 
                     if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
-                        leftNumber = stoi(variables[leftSide]);
-                        rightNumber = stoi(variables[rightSide]);
-                        // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+                        try {
+                            leftNumber = stoi(variables[leftSide]);
+                            rightNumber = stoi(variables[rightSide]);
+                            // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                        int result = leftNumber - rightNumber;
-                        varValue = to_string(result);
+                            int result = leftNumber - rightNumber;
+                            varValue = to_string(result);
 
+                            calculationSuccessful = true;
+
+                        } catch (const invalid_argument& e) {
+
+                            cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+
+                            calculationSuccessful = false;
+                        }
                     }
 
                     if(variables.find(leftSide) == variables.end()) {
@@ -115,7 +126,9 @@ int main () {
 
                 }
 
-                variables[varName] = varValue;
+                if (calculationSuccessful) {
+                    variables[varName] = varValue;
+                }
                 // cout << "Stored value: " << variables[varName] << endl;
 
                 // cout << varName << " = " << variables[varName] << endl;
