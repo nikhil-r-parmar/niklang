@@ -116,20 +116,20 @@ int main () {
 
                     if(variables.find(leftSide) == variables.end()) {
                         cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
-
+                        calculationSuccessful = false;
                     }
 
                     if(variables.find(rightSide) == variables.end()) {
                         cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
-
+                        calculationSuccessful = false;
                     }
 
-                } else if (varValue.find("-") != string::npos) {
+                } else if (varValue.find("+") != string::npos) {
                     int leftNumber, rightNumber;
 
-                    int minus = varValue.find("-");
-                    string leftSide = varValue.substr(0, minus-1);
-                    string rightSide = varValue.substr(minus+2);
+                    int plus = varValue.find("+");
+                    string leftSide = varValue.substr(0, plus-1);
+                    string rightSide = varValue.substr(plus+2);
 
                     if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
                         try {
@@ -137,7 +137,7 @@ int main () {
                             rightNumber = stoi(variables[rightSide]);
                             // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                            int result = leftNumber - rightNumber;
+                            int result = leftNumber + rightNumber;
                             varValue = to_string(result);
 
                             calculationSuccessful = true;
@@ -152,12 +152,12 @@ int main () {
 
                     if(variables.find(leftSide) == variables.end()) {
                         cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
-
+                        calculationSuccessful = false;
                     }
 
                     if(variables.find(rightSide) == variables.end()) {
                         cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
-
+                        calculationSuccessful = false;
                     }
 
                 }
