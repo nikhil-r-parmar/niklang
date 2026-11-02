@@ -41,3 +41,9 @@ maanlo total = a + missing
 maanlo a = 999999999999999999999999
 maanlo b = 20
 maanlo total = a + b
+
+maanlo a = 12
+maanlo b = 5
+maanlo product = a * b
+
+bol "Product: " + product
