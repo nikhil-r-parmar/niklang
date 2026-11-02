@@ -114,7 +114,7 @@ int main () {
                         } catch (const out_of_range& o) {
                             cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
                             calculationSuccessful = false;
-                            
+
                         }
                     }
 
@@ -142,6 +142,46 @@ int main () {
                             // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
                             int result = leftNumber + rightNumber;
+                            varValue = to_string(result);
+
+                            calculationSuccessful = true;
+
+                        } catch (const invalid_argument& e) {
+
+                            cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                            calculationSuccessful = false;
+
+                        } catch (const out_of_range& o) {
+                            cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                            calculationSuccessful = false;
+
+                        }
+                    }
+
+                    if(variables.find(leftSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
+                    if(variables.find(rightSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
+                } else if (varValue.find("*") != string::npos) {
+                    int leftNumber, rightNumber;
+
+                    int multiply = varValue.find("*");
+                    string leftSide = varValue.substr(0, multiply-1);
+                    string rightSide = varValue.substr(multiply+2);
+
+                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                        try {
+                            leftNumber = stoi(variables[leftSide]);
+                            rightNumber = stoi(variables[rightSide]);
+                            // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+
+                            int result = leftNumber * rightNumber;
                             varValue = to_string(result);
 
                             calculationSuccessful = true;
