@@ -37,3 +37,7 @@ bol "Addition: " + sum
 bol "Subtraction: " + difference
 maanlo a = 50
 maanlo total = a + missing
+
+maanlo a = 999999999999999999999999
+maanlo b = 20
+maanlo total = a + b
