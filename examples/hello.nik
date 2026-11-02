@@ -27,3 +27,13 @@ bol "Test 1: " + total
 bol "Test 2: "    +    total
 bol "Test 3: " + total    
 bol "Test 4: "    +    total    
+
+maanlo a = 50
+maanlo b = 20
+maanlo sum = a + b
+maanlo difference = a - b
+
+bol "Addition: " + sum
+bol "Subtraction: " + difference
+maanlo a = 50
+maanlo total = a + missing
