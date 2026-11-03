@@ -208,6 +208,46 @@ int main () {
                         calculationSuccessful = false;
                     }
 
+                } else if (varValue.find("/") != string::npos) {
+                    int leftNumber, rightNumber;
+
+                    int devide = varValue.find("/");
+                    string leftSide = varValue.substr(0, devide-1);
+                    string rightSide = varValue.substr(devide+2);
+
+                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                        try {
+                            leftNumber = stoi(variables[leftSide]);
+                            rightNumber = stoi(variables[rightSide]);
+                            // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
+
+                            int result = leftNumber / rightNumber;
+                            varValue = to_string(result);
+
+                            calculationSuccessful = true;
+
+                        } catch (const invalid_argument& e) {
+
+                            cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                            calculationSuccessful = false;
+
+                        } catch (const out_of_range& o) {
+                            cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                            calculationSuccessful = false;
+
+                        }
+                    }
+
+                    if(variables.find(leftSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
+                    if(variables.find(rightSide) == variables.end()) {
+                        cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
                 }
 
                 if (calculationSuccessful) {
