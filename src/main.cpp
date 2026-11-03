@@ -221,10 +221,19 @@ int main () {
                             rightNumber = stoi(variables[rightSide]);
                             // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                            int result = leftNumber / rightNumber;
-                            varValue = to_string(result);
 
-                            calculationSuccessful = true;
+                            if (rightNumber == 0) {
+                                cout << "NIKLANG ERROR: The number is cannot devidable by zero." << endl;
+                                calculationSuccessful = false;
+                            } else {
+
+                                int result = leftNumber / rightNumber;
+                                varValue = to_string(result);
+
+                                calculationSuccessful = true;
+                            }
+
+                            
 
                         } catch (const invalid_argument& e) {
 
@@ -235,7 +244,7 @@ int main () {
                             cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
                             calculationSuccessful = false;
 
-                        }
+                        } 
                     }
 
                     if(variables.find(leftSide) == variables.end()) {
