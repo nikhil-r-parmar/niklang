@@ -47,3 +47,11 @@ maanlo b = 5
 maanlo product = a * b
 
 bol "Product: " + product
+
+maanlo a = 20
+maanlo b = 5
+maanlo result = a / b
+bol "Division: " + result
+maanlo a = 20
+maanlo b = 0
+maanlo result = a / b
