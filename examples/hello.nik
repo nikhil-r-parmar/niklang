@@ -59,5 +59,10 @@ maanlo result = a / b
 maanlo a = 15.5
 maanlo b = 5.2
 maanlo result = a - b
-
 bol "Result: " + result
+maanlo minus = a - b
+bol "minus: " + minus
+maanlo product = a * b
+bol "Product: " + product
+maanlo result = a / b
+bol "Division: " + result
