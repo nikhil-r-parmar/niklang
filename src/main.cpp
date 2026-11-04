@@ -101,7 +101,7 @@ int main () {
                             rightNumber = stod(variables[rightSide]);
                             // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                            int result = leftNumber - rightNumber;
+                            double result = leftNumber - rightNumber;
                             varValue = to_string(result);
 
                             calculationSuccessful = true;
