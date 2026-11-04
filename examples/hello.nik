@@ -55,3 +55,9 @@ bol "Division: " + result
 maanlo a = 20
 maanlo b = 0
 maanlo result = a / b
+
+maanlo a = 15.5
+maanlo b = 5.2
+maanlo result = a - b
+
+bol "Result: " + result

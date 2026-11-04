@@ -129,7 +129,7 @@ int main () {
                     }
 
                 } else if (varValue.find("+") != string::npos) {
-                    int leftNumber, rightNumber;
+                    double leftNumber, rightNumber;
 
                     int plus = varValue.find("+");
                     string leftSide = varValue.substr(0, plus-1);
@@ -137,11 +137,11 @@ int main () {
 
                     if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
                         try {
-                            leftNumber = stoi(variables[leftSide]);
-                            rightNumber = stoi(variables[rightSide]);
+                            leftNumber = stod(variables[leftSide]);
+                            rightNumber = stod(variables[rightSide]);
                             // cout << leftNumber << "-" << rightNumber << "= " << leftNumber-rightNumber << endl;
 
-                            int result = leftNumber + rightNumber;
+                            double result = leftNumber + rightNumber;
                             varValue = to_string(result);
 
                             calculationSuccessful = true;
