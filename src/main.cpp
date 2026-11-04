@@ -88,10 +88,10 @@ int main () {
                     varValue = variables[varValue];
                 }
 
-                if (varValue.find("-") != string::npos) {
+                int minus = varValue.find("-");
+                if (minus != string::npos && minus > 0) {
                     double leftNumber, rightNumber;
-
-                    int minus = varValue.find("-");
+                    
                     string leftSide = varValue.substr(0, minus-1);
                     string rightSide = varValue.substr(minus+2);
 
