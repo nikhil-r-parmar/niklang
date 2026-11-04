@@ -66,3 +66,9 @@ maanlo product = a * b
 bol "Product: " + product
 maanlo result = a / b
 bol "Division: " + result
+
+maanlo a = -10.5
+maanlo b = 2.5
+maanlo result = a + b
+
+bol "Result: " + result
