@@ -88,7 +88,7 @@ int main () {
                     varValue = variables[varValue];
                 }
 
-                int minus = varValue.find("-");
+                size_t minus = varValue.find("-");
                 if (minus != string::npos && minus > 0) {
                     double leftNumber, rightNumber;
                     
@@ -131,7 +131,7 @@ int main () {
                 } else if (varValue.find("+") != string::npos) {
                     double leftNumber, rightNumber;
 
-                    int plus = varValue.find("+");
+                    size_t plus = varValue.find("+");
                     string leftSide = varValue.substr(0, plus-1);
                     string rightSide = varValue.substr(plus+2);
 
@@ -171,7 +171,7 @@ int main () {
                 } else if (varValue.find("*") != string::npos) {
                     double leftNumber, rightNumber;
 
-                    int multiply = varValue.find("*");
+                    size_t multiply = varValue.find("*");
                     string leftSide = varValue.substr(0, multiply-1);
                     string rightSide = varValue.substr(multiply+2);
 
@@ -211,9 +211,9 @@ int main () {
                 } else if (varValue.find("/") != string::npos) {
                     double leftNumber, rightNumber;
 
-                    int devide = varValue.find("/");
-                    string leftSide = varValue.substr(0, devide-1);
-                    string rightSide = varValue.substr(devide+2);
+                    size_t divide = varValue.find("/");
+                    string leftSide = varValue.substr(0, divide-1);
+                    string rightSide = varValue.substr(divide+2);
 
                     if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
                         try {
