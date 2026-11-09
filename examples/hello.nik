@@ -47,3 +47,26 @@ bol "Negative addition: " + result
 maanlo a = 999999999999999999999999
 maanlo b = 20
 maanlo result = a + b
+
+maanlo a = 20
+maanlo b = 5
+
+maanlo addition = a + b
+bol "Addition: " + addition
+
+maanlo subtraction = a - b
+bol "Subtraction: " + subtraction
+
+maanlo multiplication = a * b
+bol "Multiplication: " + multiplication
+
+maanlo division = a / b
+bol "Division: " + division
+
+maanlo zero = 0
+maanlo zeroTest = a / zero
+
+maanlo x = 10.5
+maanlo y = 2.5
+maanlo answer = x + y
+bol "Decimal: " + answer
