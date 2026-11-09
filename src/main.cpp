@@ -206,8 +206,8 @@ int main () {
                     string leftSide = varValue.substr(0, multiply-1);
                     string rightSide = varValue.substr(multiply+2);
 
-                    bool leftExists = variables.find(leftSide) != variables.end();
-                    bool rightExists = variables.find(rightSide) != variables.end();
+                    bool leftExists = variableExists(variables, leftSide);
+                    bool rightExists = variableExists(variables, rightSide);
                     if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
