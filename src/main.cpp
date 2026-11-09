@@ -26,8 +26,8 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
 }
 
-bool variableExists(map<String, String> vars) {
-    
+bool variableExists(map<String, String> &variables, string variableName) {
+    return variables.find(variableName) != variables.end();
 }
 
 int main () {
@@ -120,8 +120,8 @@ int main () {
                     string leftSide = varValue.substr(0, minus-1);
                     string rightSide = varValue.substr(minus+2);
 
-                    bool leftExists = variables.find(leftSide) != variables.end();
-                    bool rightExists = variables.find(rightSide) != variables.end();
+                    bool leftExists = variableExists(variables, leftSide);
+                    bool rightExists = variableExists(variables, rightSide)
                     if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
