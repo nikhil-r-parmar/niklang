@@ -120,12 +120,12 @@ int main () {
                         }
                     }
 
-                    if(variables.find(leftSide) == variables.end()) {
+                    if(!leftExists) {
                         cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
 
-                    if(variables.find(rightSide) == variables.end()) {
+                    if(!rightExists) {
                         cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
