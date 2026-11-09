@@ -95,7 +95,9 @@ int main () {
                     string leftSide = varValue.substr(0, minus-1);
                     string rightSide = varValue.substr(minus+2);
 
-                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                    bool leftExists = variables.find(leftSide) != variables.end();
+                    bool rightExists = variables.find(rightSide) != variables.end();
+                    if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
                             rightNumber = stod(variables[rightSide]);
