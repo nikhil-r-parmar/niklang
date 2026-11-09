@@ -286,5 +286,23 @@ int main () {
 
 
 double calculate(double leftNumber, double rightNumber, char operation) {
-    
+
+    switch(operation) {
+        case '+' :
+            // addition
+            break;
+
+        case '-' :
+            // subtraction
+            break;
+
+        case '*'
+            // multiplication
+            break;
+        
+        case '/'
+            // division
+            break;
+    }
+
 }
