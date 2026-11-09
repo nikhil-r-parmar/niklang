@@ -26,7 +26,7 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
 }
 
-bool variableExists(map<String, String>& variables, const String& variableName) {
+bool variableExists(map<string, string>& variables, const string& variableName) {
     return variables.find(variableName) != variables.end();
 }
 

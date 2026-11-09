@@ -70,3 +70,16 @@ maanlo x = 10.5
 maanlo y = 2.5
 maanlo answer = x + y
 bol "Decimal: " + answer
+
+
+maanlo a = 20
+maanlo b = 5
+
+maanlo addition = a + b
+maanlo subtraction = a - b
+maanlo multiplication = a * b
+maanlo division = a / b
+
+maanlo missing = unknown + b
+maanlo missing2 = a + unknown
+maanlo missing3 = unknown1 + unknown2
