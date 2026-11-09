@@ -26,6 +26,10 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
 }
 
+bool variableExists(map<String, String> vars) {
+    
+}
+
 int main () {
     
     map<string, string> variables;
