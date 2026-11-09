@@ -121,7 +121,7 @@ int main () {
                     string rightSide = varValue.substr(minus+2);
 
                     bool leftExists = variableExists(variables, leftSide);
-                    bool rightExists = variableExists(variables, rightSide)
+                    bool rightExists = variableExists(variables, rightSide);
                     if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
@@ -162,8 +162,8 @@ int main () {
                     string leftSide = varValue.substr(0, plus-1);
                     string rightSide = varValue.substr(plus+2);
 
-                    bool leftExists = variables.find(leftSide) != variables.end();
-                    bool rightExists = variables.find(rightSide) != variables.end();
+                    bool leftExists = variableExists(variables, leftSide);
+                    bool rightExists = variableExists(variables, rightSide);
 
                     if (leftExists && rightExists) {
                         try {
