@@ -5,6 +5,31 @@
 #include<stdexcept>
 using namespace std;
 
+double calculate(double leftNumber, double rightNumber, char operation) {
+
+    switch(operation) {
+        case '+' :
+            return leftNumber + rightNumber;
+            break;
+
+        case '-' :
+            return leftNumber - rightNumber;
+            break;
+
+        case '*' :
+            return leftNumber * rightNumber;
+            break;
+        
+        case '/' :
+            return leftNumber / rightNumber;
+            break;
+
+        default :
+            return 0;
+    }
+
+}
+
 int main () {
     
     map<string, string> variables;
@@ -285,24 +310,3 @@ int main () {
 }
 
 
-double calculate(double leftNumber, double rightNumber, char operation) {
-
-    switch(operation) {
-        case '+' :
-            return leftNumber + rightNumber;
-            break;
-
-        case '-' :
-            return leftNumber - rightNumber;
-            break;
-
-        case '*' :
-            return leftNumber * rightNumber;
-            break;
-        
-        case '/'
-            return leftNumber / rightNumber;
-            break;
-    }
-
-}
