@@ -264,7 +264,8 @@ int main () {
                                 calculationSuccessful = false;
                             } else {
 
-                                double result = leftNumber / rightNumber;
+                                double result = calculate(leftNumber, rightNumber, '/');
+
                                 varValue = to_string(result);
 
                                 calculationSuccessful = true;
