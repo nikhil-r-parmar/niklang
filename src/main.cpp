@@ -289,19 +289,19 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
     switch(operation) {
         case '+' :
-            // addition
+            return leftNumber + rightNumber;
             break;
 
         case '-' :
-            // subtraction
+            return leftNumber - rightNumber;
             break;
 
-        case '*'
-            // multiplication
+        case '*' :
+            return leftNumber * rightNumber;
             break;
         
         case '/'
-            // division
+            return leftNumber / rightNumber;
             break;
     }
 
