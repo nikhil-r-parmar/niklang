@@ -283,3 +283,8 @@ int main () {
 
     return 0;
 }
+
+
+double calculate(double leftNumber, double rightNumber, char operation) {
+    
+}
