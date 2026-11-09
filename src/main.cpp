@@ -9,7 +9,7 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
     switch(operation) {
         case '+' :
-            return leftNumber + rightNumbe;
+            return leftNumber + rightNumber;
 
         case '-' :
             return leftNumber - rightNumber;
