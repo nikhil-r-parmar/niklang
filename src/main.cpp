@@ -9,20 +9,16 @@ double calculate(double leftNumber, double rightNumber, char operation) {
 
     switch(operation) {
         case '+' :
-            return leftNumber + rightNumber;
-            break;
+            return leftNumber + rightNumbe;
 
         case '-' :
             return leftNumber - rightNumber;
-            break;
 
         case '*' :
             return leftNumber * rightNumber;
-            break;
         
         case '/' :
             return leftNumber / rightNumber;
-            break;
 
         default :
             return 0;
