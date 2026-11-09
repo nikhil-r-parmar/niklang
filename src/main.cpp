@@ -69,8 +69,8 @@
                         int variableEnd = line.find_last_not_of(" ");  
                         string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
-                        bool variableExists = variableExists(variables, variableName);
-                        if (variableExists) {
+                        bool variableFound = variableExists(variables, variableName);
+                        if (variableFound) {
                             string variableValue = variables[variableName];
 
                             cout << final << variableValue << endl;
