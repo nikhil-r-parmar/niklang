@@ -137,7 +137,10 @@ int main () {
                     string leftSide = varValue.substr(0, plus-1);
                     string rightSide = varValue.substr(plus+2);
 
-                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                    bool leftExists = variables.find(leftSide) != variables.end();
+                    bool rightExists = variables.find(rightSide) != variables.end();
+
+                    if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
                             rightNumber = stod(variables[rightSide]);
@@ -160,12 +163,12 @@ int main () {
                         }
                     }
 
-                    if(variables.find(leftSide) == variables.end()) {
+                    if(!leftExists) {
                         cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
 
-                    if(variables.find(rightSide) == variables.end()) {
+                    if(!rightExists) {
                         cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
@@ -177,6 +180,8 @@ int main () {
                     string leftSide = varValue.substr(0, multiply-1);
                     string rightSide = varValue.substr(multiply+2);
 
+                    bool leftExists = variables.find(leftSide) != variables.end();
+                    bool rightExists = variables.find(rightSide) != variables.end();
                     if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
                         try {
                             leftNumber = stod(variables[leftSide]);
