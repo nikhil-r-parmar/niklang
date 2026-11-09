@@ -182,7 +182,7 @@ int main () {
 
                     bool leftExists = variables.find(leftSide) != variables.end();
                     bool rightExists = variables.find(rightSide) != variables.end();
-                    if (variables.find(leftSide) != variables.end() && variables.find(rightSide) != variables.end()) {
+                    if (leftExists && rightExists) {
                         try {
                             leftNumber = stod(variables[leftSide]);
                             rightNumber = stod(variables[rightSide]);
@@ -205,12 +205,12 @@ int main () {
                         }
                     }
 
-                    if(variables.find(leftSide) == variables.end()) {
+                    if(!leftExists) {
                         cout << "NIKLANG ERROR : variable '" << leftSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
 
-                    if(variables.find(rightSide) == variables.end()) {
+                    if(!rightExists) {
                         cout << "NIKLANG ERROR : variable '" << rightSide << "' is not defined!" << endl;
                         calculationSuccessful = false;
                     }
