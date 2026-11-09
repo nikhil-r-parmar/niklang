@@ -26,7 +26,7 @@
 
     }
 
-    bool variableExists(map<string, string>& variables, const string& variableName) {
+    bool variableExists(const map<string, string>& variables, const string& variableName) {
         return variables.find(variableName) != variables.end();
     }
 
@@ -69,7 +69,7 @@
                         int variableEnd = line.find_last_not_of(" ");  
                         string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
-                        boolean variableExists = variableExists(variables, variableName);
+                        bool variableExists = variableExists(variables, variableName);
                         if (variableExists) {
                             string variableValue = variables[variableName];
 
@@ -110,7 +110,7 @@
                         varValue = userInput;
                     }
 
-                    boolean varValueExists = variableExists(variables, varValue);
+                    bool varValueExists = variableExists(variables, varValue);
                     if (varValueExists) {
                         varValue = variables[varValue];
                     }
