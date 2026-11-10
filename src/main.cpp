@@ -35,9 +35,14 @@
         size_t end = value.find_last_not_of(" ");
 
         if (start == string::npos) {
-            return value.substr(start, end-start + 1);
+            return "";
+        }
+
+        if (end == string::npos) {
+            return "";
         }
         
+        return value.substr(start, end-start + 1);
     }
 
     int main () {
