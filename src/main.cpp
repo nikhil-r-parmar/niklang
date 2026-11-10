@@ -61,11 +61,8 @@
 
     size_t position = findOperator(expression);
 
-    // Extract left side
-
-    // Extract right side
-
-    // Print both sides
+    string leftSide = expression.substr(0, position-1);
+    string rightSide = expression.substr(position+2);
     }
 
     int main () {
