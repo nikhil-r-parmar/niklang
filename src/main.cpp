@@ -30,7 +30,29 @@
         return variables.find(variableName) != variables.end();
     }
 
-    size_t findOperator(int value) {
+    size_t findOperator(const string& value) {
+
+        size_t plus = value.find("+");
+        size_t minus = value.find("-");
+        size_t multiply = value.find("*");
+        size_t divide = value.find("/");
+        
+        if (plus != string::npos) {
+            return plus;
+
+        } else if (minus != string::npos && minus > 0) {
+            return minus;
+
+        } else if (multiply != string::npos) {
+            return multiply;
+
+        } else if (divide != string::npos) {
+            return divide;
+
+        } else {
+            return string::npos;
+
+        }
 
     }
 
