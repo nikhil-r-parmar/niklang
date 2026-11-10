@@ -57,6 +57,17 @@
         return value.substr(start, end-start + 1);
     }
 
+    void splitExpression(const string& expression) {
+
+    size_t position = findOperator(expression);
+
+    // Extract left side
+
+    // Extract right side
+
+    // Print both sides
+    }
+
     int main () {
         
         map<string, string> variables;
