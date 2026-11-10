@@ -32,28 +32,20 @@
 
     size_t findOperator(const string& value) {
 
-        size_t plus = value.find("+");
-        size_t minus = value.find("-");
-        size_t multiply = value.find("*");
-        size_t divide = value.find("/");
-        
-        if (plus != string::npos) {
-            return plus;
+        size_t position = value.find_first_of("+-*/");
 
-        } else if (minus != string::npos && minus > 0) {
-            return minus;
-
-        } else if (multiply != string::npos) {
-            return multiply;
-
-        } else if (divide != string::npos) {
-            return divide;
-
-        } else {
+        if (position == string::npos) {
             return string::npos;
 
+        } else if (position == 0 && value[position] == '-') {
+            return string::npos;
+
+        } else {
+            return position;
+        
         }
 
+        return string::npos;
     }
 
     string trim(const string& value) {
