@@ -37,10 +37,6 @@
         if (start == string::npos) {
             return "";
         }
-
-        if (end == string::npos) {
-            return "";
-        }
         
         return value.substr(start, end-start + 1);
     }
