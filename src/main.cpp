@@ -44,8 +44,6 @@
             return position;
         
         }
-
-        return string::npos;
     }
 
     string trim(const string& value) {
