@@ -59,10 +59,17 @@
 
     void splitExpression(const string& expression) {
 
-    size_t position = findOperator(expression);
+        size_t position = findOperator(expression);
 
-    string leftSide = expression.substr(0, position-1);
-    string rightSide = expression.substr(position+2);
+        if (position != string::npos) {
+            string leftSide = trim(expression.substr(0, position));
+            string rightSide = trim(expression.substr(position+1));
+
+            cout << "Left: " << leftSide << endl;
+            cout << "Right: " << rightSide << endl;
+        } else {
+            return;
+        }
     }
 
     int main () {
@@ -150,7 +157,7 @@
                         varValue = variables[varValue];
                     }
 
-                    size_t minus = findOperator(varvalues);
+                    size_t minus = findOperator(varValue);
                     if (minus != string::npos && minus > 0) {
                         double leftNumber, rightNumber;
                         
