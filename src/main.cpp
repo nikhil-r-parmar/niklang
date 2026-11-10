@@ -57,7 +57,7 @@
         return value.substr(start, end-start + 1);
     }
 
-    void splitExpression(const string& expression) {
+    pair<String, String> splitExpression(const string& expression) {
 
         size_t position = findOperator(expression);
 
@@ -65,10 +65,9 @@
             string leftSide = trim(expression.substr(0, position));
             string rightSide = trim(expression.substr(position+1));
 
-            cout << "Left: " << leftSide << endl;
-            cout << "Right: " << rightSide << endl;
+            return {leftSide, rightSide};
         } else {
-            return;
+            return {"", ""};
         }
     }
 
