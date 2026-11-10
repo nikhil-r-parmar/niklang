@@ -30,6 +30,13 @@
         return variables.find(variableName) != variables.end();
     }
 
+    string trim(const string& value) {
+        size_t start = value.find_first_not_of(" ");
+        size_t end = value.find_last_not_of(" ");
+
+        return substr(start, end-start);
+    }
+
     int main () {
         
         map<string, string> variables;
