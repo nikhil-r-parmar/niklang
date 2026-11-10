@@ -30,6 +30,10 @@
         return variables.find(variableName) != variables.end();
     }
 
+    size_t findOperator(int value) {
+
+    }
+
     string trim(const string& value) {
         size_t start = value.find_first_not_of(" ");
         size_t end = value.find_last_not_of(" ");
@@ -126,7 +130,7 @@
                         varValue = variables[varValue];
                     }
 
-                    size_t minus = varValue.find("-");
+                    size_t minus = findOperator(varvalues);
                     if (minus != string::npos && minus > 0) {
                         double leftNumber, rightNumber;
                         
