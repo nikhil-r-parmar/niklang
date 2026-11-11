@@ -112,3 +112,17 @@ bol "Test 2: " + result2
 bol "Test 3: " + result3
 bol "Test 4: " + result4
 bol "Test 5: " + result5
+
+
+maanlo a = -10.5
+maanlo b = 2.5
+
+maanlo result1 = a+b
+maanlo result2 = a-b
+maanlo result3 = a*b
+maanlo result4 = a/b
+
+bol "Negative addition: " + result1
+bol "Negative subtraction: " + result2
+bol "Negative multiplication: " + result3
+bol "Negative division: " + result4
