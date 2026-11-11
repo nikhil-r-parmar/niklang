@@ -288,8 +288,7 @@
                     if (variableExists(variables, leftSide)) {
                         leftNumber = stod(variables[leftSide]);
                     } else {
-                        cout << "NIKLANG ERROR: Variable '" << leftSide << "' not defined!" << endl;
-                        calculationSuccessful = false;
+                        leftNumber = stod(leftSide);
                     }
 
                     if (variableExists(variables, rightSide)) {
