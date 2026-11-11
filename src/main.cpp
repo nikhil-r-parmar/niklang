@@ -178,6 +178,8 @@
 
                             double result = calculate(leftNumber, rightNumber, operation);
 
+                            calculationSuccessful = true;
+
                         }
                     }
 
