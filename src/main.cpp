@@ -217,7 +217,23 @@
                     size_t conditionStart = line.find("agar ") + 5;
                     size_t conditionEnd = line.find("{");
 
-                    string condition = line.substr(conditionStart, conditionStart-conditionEnd);
+                    string condition = line.substr(conditionStart, conditionEnd-conditionStart);
+
+                    if(condition.find(">=") != string::npos) {
+
+                    } else if (condition.find("<=") != string::npos) {
+
+                    } else if (condition.find("==") != string::npos) {
+
+                    } else if (condition.find("!=") != string::npos) {
+
+                    } else if (condition.find(">") != string::npos) {
+
+                    } else if (condition.find("<") != string::npos) {
+
+                    } else {
+                        
+                    }
 
                     cout << condition << endl;
                 }
