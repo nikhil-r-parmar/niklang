@@ -254,8 +254,9 @@
                     string leftSide = trim(condition.substr(0, operatorPosition));
                     string rightSide = trim(condition.substr(operatorPosition + comparisionOperator.length(), condition.length() - (operatorPosition + comparisionOperator.length())));
 
-                    cout << condition << endl;
-                    cout << leftSide << comparisionOperator << rightSide << endl;
+                    cout << "Left: " << leftSide << endl;
+                    cout << "Operator: " << comparisionOperator << endl;
+                    cout << "Right: " << rightSide << endl;
                 }
             }
         } else {

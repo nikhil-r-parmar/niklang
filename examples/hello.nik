@@ -143,3 +143,8 @@ maanlo result4 = a/b
 bol "Negative division: " + result4
 
 marks >= 35
+
+agar marks >= 35 {
+agar age == 18 {
+agar price < 500 {
+agar score != 0 {
