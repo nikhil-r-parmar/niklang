@@ -220,31 +220,31 @@
                     string condition = line.substr(conditionStart, conditionEnd-conditionStart);
 
                     string comparisionOperator;
-                    size_t operatorPosition;
+                    size_t operatorPosition = string::npos;
 
                     if(condition.find(">=") != string::npos) {
                         comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        operatorPosition = condition.find(">=");
 
                     } else if (condition.find("<=") != string::npos) {
-                        comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        comparisionOperator = "<=";
+                        operatorPosition = condition.find("<=");
 
                     } else if (condition.find("==") != string::npos) {
-                        comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        comparisionOperator = "==";
+                        operatorPosition = condition.find("==");
 
                     } else if (condition.find("!=") != string::npos) {
-                        comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        comparisionOperator = "!=";
+                        operatorPosition = condition.find("!=");
 
                     } else if (condition.find(">") != string::npos) {
-                        comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        comparisionOperator = ">";
+                        operatorPosition = condition.find(">");
 
                     } else if (condition.find("<") != string::npos) {
-                        comparisionOperator = ">=";
-                        operatorPosition = conditon.find("<=");
+                        comparisionOperator = "<";
+                        operatorPosition = condition.find("<");
 
                     } else {
                         cout << "NIKLANG ERROR: Invalid Comparision Operator!" << endl;
