@@ -171,6 +171,10 @@
                             cout << "NIKLANG ERROR: variable '" + rightSide + "' is not defined!" << endl;
                             calculationSuccessful = false;
                         }
+
+                        if (leftExists && rightExists) {
+                            
+                        }
                     }
 
                     bool varValueExists = variableExists(variables, varValue);
