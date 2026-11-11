@@ -74,7 +74,7 @@
     bool compareValues(double leftValue, double rightValue, const string& operation) {
         if (operation == ">=") {
             return (leftValue >= rightValue);
-            
+
         } else if (operation == "<=") {
             return (leftValue <= rightValue);
 
@@ -90,7 +90,7 @@
         } else if (operation == "<") {
             return (leftValue < rightValue);
 
-        } else (operation == "==") {
+        } else {
             return false;
         }
     }
