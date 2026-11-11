@@ -157,6 +157,7 @@
 
                         string leftSide = operands.first;
                         string rightSide = operands.second;
+                        char operation = varValue[position];
 
                         bool leftExists = variableExists(variables, leftSide);
                         bool rightExists = variableExists(variables, rightSide);
