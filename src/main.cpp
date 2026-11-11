@@ -152,11 +152,14 @@
                     }
 
                     size_t position = findOperator(varValue);
-                    if (position != string:npos) {
+                    if (position != string::npos) {
                         pair<string, string> operands = splitExpression(varValue);
 
                         string leftSide = operands.first;
                         string rightSide = operands.second;
+
+                        bool leftExists = variableExists(variables, leftSide);
+                        bool rightExists = variableExists(variables, rightSide);
                     }
 
                     bool varValueExists = variableExists(variables, varValue);
