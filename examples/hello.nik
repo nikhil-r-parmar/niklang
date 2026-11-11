@@ -96,3 +96,19 @@ bol "Addition: " + sum
 bol "Subtraction: " + difference
 bol "Multiplication: " + product
 bol "Division: " + division
+
+
+maanlo a = 20
+maanlo b = 5
+
+maanlo result1 = a+b
+maanlo result2 = a  +  b
+maanlo result3 = a-b
+maanlo result4 = a*b
+maanlo result5 = a/b
+
+bol "Test 1: " + result1
+bol "Test 2: " + result2
+bol "Test 3: " + result3
+bol "Test 4: " + result4
+bol "Test 5: " + result5
