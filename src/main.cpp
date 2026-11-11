@@ -182,10 +182,10 @@
                                 calculationSuccessful = true;
                             }
 
-                            if (calculationSuccessful) {
-                                variables[varName] = varValue;
-                            }
                         }
+                    if (calculationSuccessful) {
+                        variables[varName] = varValue;
+                    }
 
                     bool varValueExists = variableExists(variables, varValue);
                     if (varValueExists) {
