@@ -151,6 +151,12 @@
                         varValue = userInput;
                     }
 
+                    bool varValueExists = variableExists(variables, varValue);
+
+                    if (varValueExists) {
+                        varValue = variables[varValue];
+                    }
+                    
                     size_t position = findOperator(varValue);
                         if (position != string::npos) {
                             pair<string, string> operands = splitExpression(varValue);
@@ -177,7 +183,7 @@
                                     double leftNumber = stod(variables[leftSide]);
                                     double rightNumber = stod(variables[rightSide]);
 
-                                    if (operator=='/' && rightSide == 0) {
+                                    if (operation == '/' && rightNumber == 0) {
 
                                         cout << "NIKLANG ERROR: Cannot devide by zero." << endl;
                                         calculationSuccessful = false;
