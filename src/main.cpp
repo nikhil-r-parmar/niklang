@@ -219,20 +219,36 @@
 
                     string condition = line.substr(conditionStart, conditionEnd-conditionStart);
 
+                    string comparisionOperator;
+                    size_t operatorPosition;
+
                     if(condition.find(">=") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else if (condition.find("<=") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else if (condition.find("==") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else if (condition.find("!=") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else if (condition.find(">") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else if (condition.find("<") != string::npos) {
+                        comparisionOperator = ">=";
+                        operatorPosition = conditon.find("<=");
 
                     } else {
-                        
+                        cout << "NIKLANG ERROR: Invalid Comparision Operator!" << endl;
+
                     }
 
                     cout << condition << endl;
