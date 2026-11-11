@@ -71,6 +71,10 @@
         }
     }
 
+    bool compareValues(double leftValue, double rightValue, const string& operation) {
+        if operati
+    }
+
     int main () {
         
         map<string, string> variables;
