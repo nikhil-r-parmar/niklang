@@ -141,3 +141,5 @@ maanlo a = -10.5
 maanlo b = 2.5
 maanlo result4 = a/b
 bol "Negative division: " + result4
+
+marks >= 35

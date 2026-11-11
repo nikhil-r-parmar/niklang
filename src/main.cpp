@@ -251,6 +251,9 @@
 
                     }
 
+                    string leftSide = trim(condition.substr(0, operatorPosition));
+                    string rightSide = trim(condition.substr(operatorPosition + comparisionOperator.length(), condition.length() - (operatorPosition + comparisionOperator.length()));
+
                     cout << condition << endl;
                 }
             }
