@@ -278,9 +278,24 @@
                     string leftSide = trim(condition.substr(0, operatorPosition));
                     string rightSide = trim(condition.substr(operatorPosition + comparisionOperator.length(), condition.length() - (operatorPosition + comparisionOperator.length())));
 
-                    cout << "Left: " << leftSide << endl;
-                    cout << "Operator: " << comparisionOperator << endl;
-                    cout << "Right: " << rightSide << endl;
+                    // cout << "Left: " << leftSide << endl;
+                    // cout << "Operator: " << comparisionOperator << endl;
+                    // cout << "Right: " << rightSide << endl;
+
+                    if (variableExists(variables, leftSide)) {
+                        double leftNumber = stod(variables[leftSide]);
+                    } else {
+                        cout << "NIKLANG ERROR: Variable '" << leftSide << "' not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
+                    if (variableExists(variables, rightSide)) {
+                        double rightNumber = stod(variables[rightSide]);
+                    } else {
+                        cout << "NIKLANG ERROR: Variable '" << rightSide << "' not defined!" << endl;
+                        calculationSuccessful = false;
+                    }
+
                 }
             }
         } else {
