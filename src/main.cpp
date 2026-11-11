@@ -152,39 +152,40 @@
                     }
 
                     size_t position = findOperator(varValue);
-                    if (position != string::npos) {
-                        pair<string, string> operands = splitExpression(varValue);
+                        if (position != string::npos) {
+                            pair<string, string> operands = splitExpression(varValue);
 
-                        string leftSide = operands.first;
-                        string rightSide = operands.second;
-                        char operation = varValue[position];
+                            string leftSide = operands.first;
+                            string rightSide = operands.second;
+                            char operation = varValue[position];
 
-                        bool leftExists = variableExists(variables, leftSide);
-                        bool rightExists = variableExists(variables, rightSide);
+                            bool leftExists = variableExists(variables, leftSide);
+                            bool rightExists = variableExists(variables, rightSide);
 
-                        if(!leftExists) {
-                            cout << "NIKLANG ERROR: variable '" + leftSide + "' is not defined!" << endl;
-                            calculationSuccessful = false;
+                            if(!leftExists) {
+                                cout << "NIKLANG ERROR: variable '" + leftSide + "' is not defined!" << endl;
+                                calculationSuccessful = false;
+                            }
+
+                            if(!rightExists) {
+                                cout << "NIKLANG ERROR: variable '" + rightSide + "' is not defined!" << endl;
+                                calculationSuccessful = false;
+                            }
+
+                            if (leftExists && rightExists) {
+                                double leftNumber = stod(variables[leftSide]);
+                                double rightNumber = stod(variables[rightSide]);
+
+                                double result = calculate(leftNumber, rightNumber, operation);
+
+                                varValue = to_string(result);
+                                calculationSuccessful = true;
+                            }
+
+                            if (calculationSuccessful) {
+                                variables[varName] = varValue;
+                            }
                         }
-
-                        if(!rightExists) {
-                            cout << "NIKLANG ERROR: variable '" + rightSide + "' is not defined!" << endl;
-                            calculationSuccessful = false;
-                        }
-
-                        if (leftExists && rightExists) {
-                            double leftNumber = stod(variables[leftSide]);
-                            double rightNumber = stod(variables[rightSide]);
-
-                            double result = calculate(leftNumber, rightNumber, operation);
-
-                            calculationSuccessful = true;
-                        }
-
-                        if (calculationSuccessful) {
-                            variables[varName] = varValue;
-                        }
-                    }
 
                     bool varValueExists = variableExists(variables, varValue);
                     if (varValueExists) {
