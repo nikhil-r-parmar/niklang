@@ -282,15 +282,18 @@
                     // cout << "Operator: " << comparisionOperator << endl;
                     // cout << "Right: " << rightSide << endl;
 
+                    double leftNumber = 0;
+                    double rightNumber = 0;
+
                     if (variableExists(variables, leftSide)) {
-                        double leftNumber = stod(variables[leftSide]);
+                        leftNumber = stod(variables[leftSide]);
                     } else {
                         cout << "NIKLANG ERROR: Variable '" << leftSide << "' not defined!" << endl;
                         calculationSuccessful = false;
                     }
 
                     if (variableExists(variables, rightSide)) {
-                        double rightNumber = stod(variables[rightSide]);
+                        rightNumber = stod(variables[rightSide]);
                     } else {
                         cout << "NIKLANG ERROR: Variable '" << rightSide << "' not defined!" << endl;
                         calculationSuccessful = false;
