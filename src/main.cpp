@@ -161,6 +161,16 @@
 
                         bool leftExists = variableExists(variables, leftSide);
                         bool rightExists = variableExists(variables, rightSide);
+
+                        if(!leftExists) {
+                            cout << "NIKLANG ERROR: " + leftSide + " is not defined!" << endl;
+                            calculationSuccessfull = false;
+                        }
+
+                        if(!rightExists) {
+                            cout << "NIKLANG ERROR: " + rightSide + " is not defined!" << endl;
+                            calculationSuccessfull = false;
+                        }
                     }
 
                     bool varValueExists = variableExists(variables, varValue);
