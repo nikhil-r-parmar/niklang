@@ -72,7 +72,27 @@
     }
 
     bool compareValues(double leftValue, double rightValue, const string& operation) {
-        if operati
+        if (operation == ">=") {
+            return (leftValue >= rightValue);
+            
+        } else if (operation == "<=") {
+            return (leftValue <= rightValue);
+
+        } else if (operation == "==") {
+            return (leftValue == rightValue);
+
+        } else if (operation == "!=") {
+            return (leftValue != rightValue);
+
+        } else if (operation == ">") {
+            return (leftValue > rightValue);
+
+        } else if (operation == "<") {
+            return (leftValue < rightValue);
+
+        } else (operation == "==") {
+            return false;
+        }
     }
 
     int main () {
