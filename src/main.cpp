@@ -285,16 +285,28 @@
                     double leftNumber = 0;
                     double rightNumber = 0;
 
-                    if (variableExists(variables, leftSide)) {
-                        leftNumber = stod(variables[leftSide]);
-                    } else {
-                        leftNumber = stod(leftSide);
-                    }
+                    try {
+                        if (variableExists(variables, leftSide)) {
+                            leftNumber = stod(variables[leftSide]);
+                        } else {
+                            leftNumber = stod(leftSide);
+                        }
 
-                    if (variableExists(variables, rightSide)) {
-                        rightNumber = stod(variables[rightSide]);
-                    } else {
-                        rightNumber = stod(rightSide);
+                        if (variableExists(variables, rightSide)) {
+                            rightNumber = stod(variables[rightSide]);
+                        } else {
+                            rightNumber = stod(rightSide);
+                        }
+
+                    } catch (const invalid_argument& e) {
+
+                        cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                        calculationSuccessful = false;
+
+                    } catch (const out_of_range& o) {
+                        cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                        calculationSuccessful = false;
+
                     }
                 }
             }
