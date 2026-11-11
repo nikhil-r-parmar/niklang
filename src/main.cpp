@@ -177,10 +177,17 @@
                                     double leftNumber = stod(variables[leftSide]);
                                     double rightNumber = stod(variables[rightSide]);
 
-                                    double result = calculate(leftNumber, rightNumber, operation);
+                                    if (operator=='/' && rightSide == 0) {
 
-                                    varValue = to_string(result);
-                                    calculationSuccessful = true;
+                                        cout << "NIKLANG ERROR: Cannot devide by zero." << endl;
+                                        calculationSuccessful = false;
+                                    } else {
+
+                                        double result = calculate(leftNumber, rightNumber, operation);
+
+                                        varValue = to_string(result);
+                                        calculationSuccessful = true;
+                                    }
 
                                 } catch (const invalid_argument& e) {
 
