@@ -173,7 +173,11 @@
                         }
 
                         if (leftExists && rightExists) {
-                            
+                            double leftNumber = stod(variables[leftSide]);
+                            double rightNumber = stod(variables[rightSide]);
+
+                            double result = calculate(leftNumber, rightNumber, operation);
+
                         }
                     }
 
