@@ -298,6 +298,14 @@
                             rightNumber = stod(rightSide);
                         }
 
+                        if (calculationSuccessful) {
+                            bool conditionResult = compareValues(
+                                leftNumber, rightNumber, comparisionOperator
+                            );
+
+                            cout << conditionResult << endl;
+                        }
+
                     } catch (const invalid_argument& e) {
 
                         cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
