@@ -179,7 +179,10 @@
                             double result = calculate(leftNumber, rightNumber, operation);
 
                             calculationSuccessful = true;
+                        }
 
+                        if (calculationSuccessful) {
+                            variables[varName] = varValue;
                         }
                     }
 
