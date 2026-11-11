@@ -57,7 +57,7 @@
         return value.substr(start, end-start + 1);
     }
 
-    pair<String, String> splitExpression(const string& expression) {
+    pair<string, string> splitExpression(const string& expression) {
 
         size_t position = findOperator(expression);
 
