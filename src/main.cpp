@@ -212,6 +212,15 @@
                         variables[varName] = varValue;
                     }
                 }
+
+                if (line.find("agar ") == 0) {
+                    size_t conditionStart = line.find("agar ") + 5;
+                    size_t conditionEnd = line.find("{");
+
+                    string condition = line.substr(conditionStart, conditionStart-conditionEnd);
+
+                    cout << condition << endl;
+                }
             }
         } else {
             cout << "Could not open the file!" << endl;
