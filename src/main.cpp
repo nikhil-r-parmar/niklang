@@ -151,6 +151,14 @@
                         varValue = userInput;
                     }
 
+                    size_t position = findOperator(varValue);
+                    if (position != string:npos) {
+                        pair<string, string> operands = splitExpression(varValue);
+
+                        string leftSide = operands.first;
+                        string rightSide = operands.second;
+                    }
+
                     bool varValueExists = variableExists(variables, varValue);
                     if (varValueExists) {
                         varValue = variables[varValue];
