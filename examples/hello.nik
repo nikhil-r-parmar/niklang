@@ -83,3 +83,16 @@ maanlo division = a / b
 maanlo missing = unknown + b
 maanlo missing2 = a + unknown
 maanlo missing3 = unknown1 + unknown2
+
+maanlo a = 20
+maanlo b = 5
+
+maanlo sum = a+b
+maanlo difference = a-b
+maanlo product = a*b
+maanlo division = a/b
+
+bol "Addition: " + sum
+bol "Subtraction: " + difference
+bol "Multiplication: " + product
+bol "Division: " + division
