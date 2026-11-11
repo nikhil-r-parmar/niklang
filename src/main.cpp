@@ -173,13 +173,25 @@
                             }
 
                             if (leftExists && rightExists) {
-                                double leftNumber = stod(variables[leftSide]);
-                                double rightNumber = stod(variables[rightSide]);
+                                try {
+                                    double leftNumber = stod(variables[leftSide]);
+                                    double rightNumber = stod(variables[rightSide]);
 
-                                double result = calculate(leftNumber, rightNumber, operation);
+                                    double result = calculate(leftNumber, rightNumber, operation);
 
-                                varValue = to_string(result);
-                                calculationSuccessful = true;
+                                    varValue = to_string(result);
+                                    calculationSuccessful = true;
+
+                                } catch (const invalid_argument& e) {
+
+                                    cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                                    calculationSuccessful = false;
+
+                                // } catch (const out_of_range& o) {
+                                //     cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                                //     calculationSuccessful = false;
+
+                                // }
                             }
 
                         }
