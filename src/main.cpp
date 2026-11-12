@@ -95,8 +95,13 @@
         }
     }
 
-    void executeBol(const string& line, map<string, string> variables) {
-        
+    void executeBol(const string& line, map<string, string>& variables) {
+        line.find("bol") == 0;
+
+        int firstQuote = line.find('"');
+        int secondQuote = line.find('"',firstQuote + 1);
+
+        string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
     }
 
     int main () {
