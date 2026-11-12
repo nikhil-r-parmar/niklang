@@ -319,7 +319,11 @@
                     }
 
                     if (calculationSuccessful && conditionResult) {
-                        
+                        while (getline(MyFile, line)) {
+                            if (line.find("bol") == 0) {
+                                
+                            }
+                        }
                     }
                 }
             }
