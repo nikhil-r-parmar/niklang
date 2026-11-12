@@ -314,6 +314,7 @@
                     bool conditionResult = false;
                     bool calculationSuccessful = true;
                     bool executeAgarBlock = calculationSuccessful && conditionResult;
+                    bool executeWarnaBlock = calculationSuccessful && !conditionResult;
 
                     try {
                         if (variableExists(variables, leftSide)) {
