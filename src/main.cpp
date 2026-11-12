@@ -311,7 +311,8 @@
 
                     double leftNumber = 0;
                     double rightNumber = 0;
-                    bool conditionResult = false
+                    bool conditionResult = false;
+                    bool calculationSuccessful = true;
 
                     try {
                         if (variableExists(variables, leftSide)) {
