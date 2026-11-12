@@ -351,7 +351,13 @@
                         while (getline(MyFile, line)) {
 
                             if (trim(line) == "}") {
-                                break;
+                                while(MyFile, Line) {
+                                    if (trim(line) == "warna {") {
+
+                                    } else {
+                                        break;
+                                    }
+                                }
                             }
 
                             if (executeAgarBlock && trim(line).find("bol") == 0) {
