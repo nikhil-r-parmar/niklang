@@ -284,6 +284,7 @@
 
                     double leftNumber = 0;
                     double rightNumber = 0;
+                    bool conditionResult = false
 
                     try {
                         if (variableExists(variables, leftSide)) {
@@ -299,7 +300,7 @@
                         }
 
                         if (calculationSuccessful) {
-                            bool conditionResult = compareValues(
+                            conditionResult = compareValues(
                                 leftNumber, rightNumber, comparisionOperator
                             );
 
