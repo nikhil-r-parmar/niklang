@@ -353,7 +353,7 @@
                             }
 
                             if (line.find("bol") == 0) {
-
+                                executeBol(line, variables);
                             }
                         }
                     }
