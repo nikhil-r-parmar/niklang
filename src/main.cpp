@@ -101,6 +101,25 @@
         int secondQuote = line.find('"',firstQuote + 1);
 
         string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
+
+        if (line.find("+") != string::npos) {
+            int plusPos = line.find("+");
+            int variableStart = line.find_first_not_of(" ", plusPos+1);
+            int variableEnd = line.find_last_not_of(" ");  
+            string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
+
+            bool variableFound = variableExists(variables, variableName);
+            if (variableFound) {
+                string variableValue = variables[variableName];
+
+                cout << final << variableValue << endl;
+            } else {
+                cout << "NIKLANG ERROR : variable '" << variableName << "' is not defined!" << endl;
+            }
+
+        } else {
+            cout << final << endl;
+        }
     }
 
     int main () {
