@@ -313,9 +313,7 @@
                     double rightNumber = 0;
                     bool conditionResult = false;
                     bool calculationSuccessful = true;
-                    bool executeAgarBlock = calculationSuccessful && conditionResult;
-                    bool executeWarnaBlock = calculationSuccessful && !conditionResult;
-
+                    
                     try {
                         if (variableExists(variables, leftSide)) {
                             leftNumber = stod(variables[leftSide]);
@@ -347,39 +345,38 @@
 
                     }
 
+                    bool executeAgarBlock = calculationSuccessful && conditionResult;
+                    bool executeWarnaBlock = calculationSuccessful && !conditionResult;
+
+
                     if (calculationSuccessful) {
                         while (getline(MyFile, line)) {
 
                             if (trim(line) == "}") {
-                                if (getline(MyFile, line)) {
-                                    if (trim(line) == "warna {") {
-
-                                        if (!executeAgarBlock) {
-
-                                            while (getline(MyFile, line)) {
-                                                if (trim(line) == "}") {
-                                                    break;
-                                                }
-
-                                                if(trim(line).find("bol") == 0) {
-                                                    executeBol(trim(line), variables);
-                                                }
-                                            }
-                                        }
-
-                                    } else {
-                                        break;
-                                    }
-                                }
+                                break;
                             }
 
                             if (executeAgarBlock && trim(line).find("bol") == 0) {
                                 executeBol(trim(line), variables);
                             }
                         }
+
+                        if(getline(MyFile, line) && trim(line) == "warna {") {
+
+                            while (getline(MyFile, line)) {
+                                if (trim(line) == "}") {
+                                break;
+
+                            }
+
+                            if(executeWarnaBlock && trim(line).find("bol") == 0) {
+                                executeBol(trim(line), variables);
+                            }
+                        }
                     }
                 }
             }
+        }
         } else {
             cout << "Could not open the file!" << endl;
         }
