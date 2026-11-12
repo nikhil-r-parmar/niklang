@@ -320,8 +320,13 @@
 
                     if (calculationSuccessful && conditionResult) {
                         while (getline(MyFile, line)) {
+
+                            if (trim(line) == "}") {
+
+                            }
+                            
                             if (line.find("bol") == 0) {
-                                
+
                             }
                         }
                     }
