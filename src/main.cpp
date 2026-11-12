@@ -332,7 +332,6 @@
                                 leftNumber, rightNumber, comparisionOperator
                             );
 
-                            cout << conditionResult << endl;
                         }
 
                     } catch (const invalid_argument& e) {
@@ -353,7 +352,7 @@
                                 break;
                             }
 
-                            if (line.find("bol") == 0) {
+                            if (trim(line).find("bol") == 0) {
                                 executeBol(line, variables);
                             }
                         }
