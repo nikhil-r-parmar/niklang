@@ -351,17 +351,19 @@
                         while (getline(MyFile, line)) {
 
                             if (trim(line) == "}") {
-                                if (getline(MyFile, Line)) {
+                                if (getline(MyFile, line)) {
                                     if (trim(line) == "warna {") {
 
                                         if (!executeAgarBlock) {
 
-                                            if (trim(line) == "}") {
-                                                break;
-                                            }
+                                            while (getline(MyFile, line)) {
+                                                if (trim(line) == "}") {
+                                                    break;
+                                                }
 
-                                            if(trim(line).find("bol") == 0) {
-                                                executeBol(trim(line), variables);
+                                                if(trim(line).find("bol") == 0) {
+                                                    executeBol(trim(line), variables);
+                                                }
                                             }
                                         }
 
