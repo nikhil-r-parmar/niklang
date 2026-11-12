@@ -95,6 +95,10 @@
         }
     }
 
+    void executeBol(const string& line, map<string, string> variables) {
+        
+    }
+
     int main () {
         
         map<string, string> variables;
