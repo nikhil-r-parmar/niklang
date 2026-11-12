@@ -317,6 +317,10 @@
                         calculationSuccessful = false;
 
                     }
+
+                    if (calculationSuccessful && conditionResult) {
+                        
+                    }
                 }
             }
         } else {
