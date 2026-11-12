@@ -350,7 +350,17 @@
 
 
                     if (calculationSuccessful) {
+
+                        bool warnaFound = false;
+
                         while (getline(MyFile, line)) {
+
+                            string currentLine = trim(line);
+
+                            if (currentLine == "warna {" || currentLine == "} warna {") {
+                                warnaFound = true;
+                                break;
+                            }
 
                             if (trim(line) == "}") {
                                 break;
@@ -361,21 +371,20 @@
                             }
                         }
 
-                        if(getline(MyFile, line) && trim(line) == "warna {") {
-
+                        if(warnaFound) {
                             while (getline(MyFile, line)) {
                                 if (trim(line) == "}") {
-                                break;
+                                    break;
+                                }
 
-                            }
-
-                            if(executeWarnaBlock && trim(line).find("bol") == 0) {
-                                executeBol(trim(line), variables);
+                                if(executeWarnaBlock && trim(line).find("bol") == 0) {
+                                    executeBol(trim(line), variables);
+                                }
                             }
                         }
                     }
                 }
-            }
+            
         }
         } else {
             cout << "Could not open the file!" << endl;
