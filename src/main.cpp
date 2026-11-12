@@ -322,9 +322,9 @@
                         while (getline(MyFile, line)) {
 
                             if (trim(line) == "}") {
-
+                                break;
                             }
-                            
+
                             if (line.find("bol") == 0) {
 
                             }
