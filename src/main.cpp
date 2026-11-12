@@ -96,7 +96,6 @@
     }
 
     void executeBol(const string& line, map<string, string>& variables) {
-        line.find("bol") == 0;
 
         int firstQuote = line.find('"');
         int secondQuote = line.find('"',firstQuote + 1);
