@@ -313,6 +313,7 @@
                     double rightNumber = 0;
                     bool conditionResult = false;
                     bool calculationSuccessful = true;
+                    bool executeAgarBlock == calculationSuccessfull && conditionResult;
 
                     try {
                         if (variableExists(variables, leftSide)) {
@@ -345,15 +346,15 @@
 
                     }
 
-                    if (calculationSuccessful && conditionResult) {
+                    if (calculationSuccessful) {
                         while (getline(MyFile, line)) {
 
                             if (trim(line) == "}") {
                                 break;
                             }
 
-                            if (trim(line).find("bol") == 0) {
-                                executeBol(line, variables);
+                            if (executeAgarBlock && trim(line).find("bol") == 0) {
+                                executeBol(trim(line), variables);
                             }
                         }
                     }
