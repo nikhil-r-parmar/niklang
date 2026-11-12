@@ -6,6 +6,4 @@ maanlo marks = 20
 
 agar marks >= 35 {
     bol "PASS"
-} warna {
-    bol "FAIL"
-}
+} 

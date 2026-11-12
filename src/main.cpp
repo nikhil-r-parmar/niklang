@@ -313,7 +313,7 @@
                     double rightNumber = 0;
                     bool conditionResult = false;
                     bool calculationSuccessful = true;
-                    bool executeAgarBlock == calculationSuccessfull && conditionResult;
+                    bool executeAgarBlock = calculationSuccessful && conditionResult;
 
                     try {
                         if (variableExists(variables, leftSide)) {
