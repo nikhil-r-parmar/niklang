@@ -213,6 +213,10 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
     }
 }
 
+bool isNumeric(const string& value) {
+    // Check whether the complete string is a valid number.
+}
+
     int main () {
         
         map<string, string> variables;
