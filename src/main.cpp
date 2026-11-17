@@ -155,8 +155,9 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
             // checking if varvalue string is empty or not
             if (!varValue.empty()) {
 
+                // removes extra quotes from string
                 varValue = varValue.substr(1, varValue.length() - 2);
-                cout << varValue << endl;
+                // cout << varValue << endl;
             }
 
         if (varValue.find("puch(") != string::npos) {
