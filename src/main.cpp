@@ -150,12 +150,13 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
 
             int varValueStart = line.find("= ");
             string varValue = line.substr(varValueStart+2);
-            cout << "[" << varValue << "]" << endl; // temerory debugging block
+            // cout << "[" << varValue << "]" << endl; // temerory debugging block
             
             // checking if varvalue string is empty or not
             if (!varValue.empty()) {
-                cout << (varValue.front() == '"') << endl;
-                cout << (varValue.back() == '"') << endl;
+
+                varValue = varValue.substr(1, varValue.length() - 2);
+                cout << varValue << endl;
             }
 
         if (varValue.find("puch(") != string::npos) {
