@@ -354,7 +354,7 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
 
                     while (getline(MyFile, line)) {
 
-                        if (trim(line) == "}") {
+                        if (trim(line) == "}") {    // read's line until closing breaket
                             break;
                         }
 
