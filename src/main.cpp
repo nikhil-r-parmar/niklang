@@ -122,6 +122,10 @@
         }
     }
 
+// isNumeric is defined below; this declaration lets executeMaanlo use it.
+bool isNumeric(const string& value);
+
+// Executes a maanlo statement and stores its value in the variables map.
 void executeMaanlo(const string& line, map<string, string>& variables) {
     if(line.find("maanlo ") == 0) {
 
@@ -164,8 +168,8 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
             string rightSide = operands.second;
             char operation = varValue[position];
 
-            bool leftExists = variableExists(variables, leftSide);
-            bool rightExists = variableExists(variables, rightSide);
+            bool leftExists = variableExists(variables, leftSide) || isNumeric(leftSide);
+            bool rightExists = variableExists(variables, rightSide) || isNumeric(rightSide);
 
             if(!leftExists) {
                 cout << "NIKLANG ERROR: variable '" + leftSide + "' is not defined!" << endl;
@@ -179,8 +183,21 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
 
             if (leftExists && rightExists) {
                 try {
-                        double leftNumber = stod(variables[leftSide]);
-                        double rightNumber = stod(variables[rightSide]);
+                        double leftNumber;
+                        double rightNumber;
+
+                        // Read a variable's stored value, or convert a numeric literal directly.
+                        if (variableExists(variables, leftSide)) {
+                            leftNumber = stod(variables[leftSide]);
+                        } else {
+                            leftNumber = stod(leftSide);
+                        }
+
+                        if (variableExists(variables, rightSide)) {
+                            rightNumber = stod(variables[rightSide]);
+                        } else {
+                            rightNumber = stod(rightSide);
+                        }
 
                     if (operation == '/' && rightNumber == 0) {
 
@@ -214,7 +231,16 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
 }
 
 bool isNumeric(const string& value) {
-    // Check whether the complete string is a valid number.
+    // stod can parse a numeric prefix, so verify how many characters it consumed.
+    try {
+        size_t position;
+        stod(value, &position);
+
+        return position == value.length();
+    } catch (...) {
+        return false;
+    }
+
 }
 
     int main () {
@@ -234,6 +260,7 @@ bool isNumeric(const string& value) {
         //     cout << "Unknown NikLang Command" << endl;
         // }
 
+        // Open the .nik program file from the project root folder.
         ifstream MyFile("./examples/hello.nik");
 
         if (MyFile) {
@@ -241,33 +268,12 @@ bool isNumeric(const string& value) {
 
             string line;
 
+            // Read and execute the program one line at a time.
             while(getline(MyFile, line)) {
                 
-                if(line.find("bol") == 0) {
-
-                    int firstQuote = line.find('"');
-                    int secondQuote = line.find('"',firstQuote + 1);
-
-                    string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
-                    
-                    if (line.find("+") != string::npos) {
-                        int plusPos = line.find("+");
-                        int variableStart = line.find_first_not_of(" ", plusPos+1);
-                        int variableEnd = line.find_last_not_of(" ");  
-                        string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
-
-                        bool variableFound = variableExists(variables, variableName);
-                        if (variableFound) {
-                            string variableValue = variables[variableName];
-
-                            cout << final << variableValue << endl;
-                        } else {
-                            cout << "NIKLANG ERROR : variable '" << variableName << "' is not defined!" << endl;
-                        }
-
-                    } else {
-                        cout << final << endl;
-                    }
+                // Execute the output command using the shared helper.
+                if (line.find("bol") == 0) {
+                    executeBol(line, variables);
                 }
 
                 if (line.find("maanlo ") == 0) {
@@ -283,6 +289,7 @@ bool isNumeric(const string& value) {
                     string comparisionOperator;
                     size_t operatorPosition = string::npos;
 
+                    // Check two-character comparison operators before single-character ones.
                     if(condition.find(">=") != string::npos) {
                         comparisionOperator = ">=";
                         operatorPosition = condition.find(">=");

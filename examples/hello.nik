@@ -74,3 +74,10 @@ maanlo a = 10
 maanlo b = 20
 maanlo total = a + b
 bol "Total: " + total
+
+maanlo count = 10
+maanlo next = count + 5
+maanlo total = next * 2
+
+bol "Next: " + next
+bol "Total: " + total
