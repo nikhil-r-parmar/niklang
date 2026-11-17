@@ -97,3 +97,76 @@ jab tak count <= 3 {
     bol "Safety Test: " + count
     maanlo count = count + 1
 }
+
+maanlo count = 10
+
+jab tak count < 5 {
+    bol "Loop is running"
+    maanlo count = count + 1
+}
+
+bol "Loop finished"
+
+maanlo score = 10
+
+jab tak score < 30 {
+    maanlo score = score + 5
+    bol "Current Score: " + score
+}
+
+# TEST 1: Condition initially false
+maanlo a = 10
+
+jab tak a < 5 {
+    bol "TEST 1 FAILED"
+}
+
+bol "TEST 1 PASSED"
+
+
+# TEST 2: Variable increment
+maanlo b = 1
+
+jab tak b <= 3 {
+    bol "Increment: " + b
+    maanlo b = b + 1
+}
+
+
+# TEST 3: Variable decrement
+maanlo c = 3
+
+jab tak c > 0 {
+    bol "Decrement: " + c
+    maanlo c = c - 1
+}
+
+
+# TEST 4: Number on left side
+maanlo d = 1
+
+jab tak 5 >= d {
+    bol "Reverse: " + d
+    maanlo d = d + 1
+}
+
+
+# TEST 5: Variable update inside loop
+maanlo e = 10
+
+jab tak e < 25 {
+    maanlo e = e + 5
+    bol "Updated: " + e
+}
+
+
+# TEST 6: Loop runs exactly once
+maanlo f = 1
+
+jab tak f == 1 {
+    bol "One time loop"
+    maanlo f = 2
+}
+
+
+bol "ALL LOOP TESTS COMPLETED"
