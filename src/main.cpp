@@ -362,17 +362,27 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
                     }
 
                     // Check the condition before every iteration.
+                    // Stop the loop if it runs too many times.
+                    int iterationCount = 0;
+
                     while (evaluateCondition(condition, variables)) {
+
+                        if (iterationCount >= 1000) {
+                            cout << "NIKLANG ERROR: Loop limit exceeded!" << endl;
+                            break;
+                        }
+
+                        iterationCount++;
 
                         for (string currentLine : loopBody) {
 
                             currentLine = trim(currentLine);
 
                             if (currentLine.find("bol ") == 0) {
-                                executeBol(currentLine, variables); // executes line
+                                executeBol(currentLine, variables);
                             }
                             else if (currentLine.find("maanlo ") == 0) {
-                                executeMaanlo(currentLine, variables);  // updates variable
+                                executeMaanlo(currentLine, variables);
                             }
                         }
                     }
