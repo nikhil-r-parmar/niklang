@@ -3,9 +3,12 @@
     #include<fstream>   
     #include<map>
     #include<stdexcept>
+    #include<vector>
     using namespace std;
 
-    double calculate(double leftNumber, double rightNumber, char operation) {
+    // Simple arithmetic helper used by the interpreter when a variable assignment contains
+// an expression such as "x = 10 + 5".
+double calculate(double leftNumber, double rightNumber, char operation) {
 
         switch(operation) {
             case '+' :
@@ -26,11 +29,14 @@
 
     }
 
-    bool variableExists(const map<string, string>& variables, const string& variableName) {
+// Checks whether a variable has already been created in the current scope.
+bool variableExists(const map<string, string>& variables, const string& variableName) {
         return variables.find(variableName) != variables.end();
     }
 
-    size_t findOperator(const string& value) {
+// Finds the first arithmetic operator in an expression. We skip a leading minus sign
+// so negative numbers like "-5 + 2" are treated as a value, not as subtraction.
+size_t findOperator(const string& value) {
 
         size_t position = value.find_first_of("+-*/");
 
@@ -46,7 +52,9 @@
         }
     }
 
-    string trim(const string& value) {
+// Removes surrounding spaces from a token so expressions like "  x  +  2 "
+// can be processed consistently.
+string trim(const string& value) {
         size_t start = value.find_first_not_of(" ");
         size_t end = value.find_last_not_of(" ");
 
@@ -57,7 +65,8 @@
         return value.substr(start, end-start + 1);
     }
 
-    pair<string, string> splitExpression(const string& expression) {
+// Splits a binary expression into its left and right operands around the operator.
+pair<string, string> splitExpression(const string& expression) {
 
         size_t position = findOperator(expression);
 
@@ -71,7 +80,8 @@
         }
     }
 
-    bool compareValues(double leftValue, double rightValue, const string& operation) {
+// Compares two numeric values using a relational operator such as >, <, or ==.
+bool compareValues(double leftValue, double rightValue, const string& operation) {
         if (operation == ">=") {
             return (leftValue >= rightValue);
 
@@ -95,7 +105,9 @@
         }
     }
 
-    void executeBol(const string& line, map<string, string>& variables) {
+// Prints a literal string and can also append the value of a variable when used in
+// the language's output statement.
+void executeBol(const string& line, map<string, string>& variables) {
 
         int firstQuote = line.find('"');
         int secondQuote = line.find('"',firstQuote + 1);
@@ -125,7 +137,8 @@
 // isNumeric is defined below; this declaration lets executeMaanlo use it.
 bool isNumeric(const string& value);
 
-// Executes a maanlo statement and stores its value in the variables map.
+// Handles variable assignment. It supports direct numeric assignment, reading input from
+// the user with puch(...), and simple arithmetic expressions like "a = 2 + 3".
 void executeMaanlo(const string& line, map<string, string>& variables) {
     if(line.find("maanlo ") == 0) {
 
@@ -230,6 +243,7 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
     }
 }
 
+// Confirms that the entire value is a valid number and not just a numeric prefix.
 bool isNumeric(const string& value) {
     // stod can parse a numeric prefix, so verify how many characters it consumed.
     try {
@@ -243,43 +257,88 @@ bool isNumeric(const string& value) {
 
 }
 
+// Evaluates a condition like "x >= 10" against the current variable values.
+bool evaluateCondition(string condition, map<string, string>& variables) {
+
+    string operation;
+    size_t position = string::npos;
+
+    if (condition.find(">=") != string::npos) {
+        operation = ">=";
+    } else if (condition.find("<=") != string::npos) {
+        operation = "<=";
+    } else if (condition.find("==") != string::npos) {
+        operation = "==";
+    } else if (condition.find("!=") != string::npos) {
+        operation = "!=";
+    } else if (condition.find(">") != string::npos) {
+        operation = ">";
+    } else if (condition.find("<") != string::npos) {
+        operation = "<";
+    } else {
+        cout << "NIKLANG ERROR: Invalid comparison operator!" << endl;
+        return false;
+    }
+
+    position = condition.find(operation);
+
+    string leftSide = trim(condition.substr(0, position));
+    string rightSide = trim(condition.substr(position + operation.length()));
+
+    try {
+        double leftNumber;
+        double rightNumber;
+
+        if (variableExists(variables, leftSide)) {
+            leftNumber = stod(variables[leftSide]);
+        } else {
+            leftNumber = stod(leftSide);
+        }
+
+        if (variableExists(variables, rightSide)) {
+            rightNumber = stod(variables[rightSide]);
+        } else {
+            rightNumber = stod(rightSide);
+        }
+
+        return compareValues(leftNumber, rightNumber, operation);
+
+    } catch (...) {
+        cout << "NIKLANG ERROR: Invalid condition!" << endl;
+        return false;
+    }
+}
+
     int main () {
         
+        // The interpreter keeps all user-defined variables in memory for the life of the script.
         map<string, string> variables;
 
         cout << "NIKLANG Interpreter started!" << endl;
 
-        string command = "bol";     // command is a string variable that stores 'bol'.
-
-        // cout << "Command: " << command << endl; 
-
-
-        // if (command == "bol") {
-        //     cout << "NikLang Output Command Detected!" << endl; 
-        // } else {
-        //     cout << "Unknown NikLang Command" << endl;
-        // }
+        // This variable is kept for historical compatibility with the original code and is not used further.
+        string command = "bol";
 
         // Open the .nik program file from the project root folder.
         ifstream MyFile("./examples/hello.nik");
 
         if (MyFile) {
-            // cout << "File Opend Successfully!" << endl;
-
             string line;
 
-            // Read and execute the program one line at a time.
+            // Read the program line by line and interpret each command as it appears.
             while(getline(MyFile, line)) {
                 
-                // Execute the output command using the shared helper.
+                // A simple print statement may be written as "bol "something"".
                 if (line.find("bol") == 0) {
                     executeBol(line, variables);
                 }
 
+                // Variable assignment and basic arithmetic happen here.
                 if (line.find("maanlo ") == 0) {
                     executeMaanlo(line, variables);
                 }
 
+                // Conditional execution starts with "agar ... {" and optional "warna" branch.
                 if (line.find("agar ") == 0) {
                     size_t conditionStart = line.find("agar ") + 5;
                     size_t conditionEnd = line.find("{");
@@ -322,10 +381,6 @@ bool isNumeric(const string& value) {
                     string leftSide = trim(condition.substr(0, operatorPosition));
                     string rightSide = trim(condition.substr(operatorPosition + comparisionOperator.length(), condition.length() - (operatorPosition + comparisionOperator.length())));
 
-                    // cout << "Left: " << leftSide << endl;
-                    // cout << "Operator: " << comparisionOperator << endl;
-                    // cout << "Right: " << rightSide << endl;
-
                     double leftNumber = 0;
                     double rightNumber = 0;
                     bool conditionResult = false;
@@ -365,7 +420,7 @@ bool isNumeric(const string& value) {
                     bool executeAgarBlock = calculationSuccessful && conditionResult;
                     bool executeWarnaBlock = calculationSuccessful && !conditionResult;
 
-
+                    // Only execute the matching branch when the condition is valid.
                     if (calculationSuccessful) {
 
                         bool warnaFound = false;
