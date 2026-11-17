@@ -369,10 +369,10 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
                             currentLine = trim(currentLine);
 
                             if (currentLine.find("bol ") == 0) {
-                                executeBol(currentLine, variables);
+                                executeBol(currentLine, variables); // executes line
                             }
                             else if (currentLine.find("maanlo ") == 0) {
-                                executeMaanlo(currentLine, variables);
+                                executeMaanlo(currentLine, variables);  // updates variable
                             }
                         }
                     }
