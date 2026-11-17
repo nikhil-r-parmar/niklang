@@ -338,6 +338,46 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
                     executeMaanlo(line, variables);
                 }
 
+                // Run the loop while its condition stays true.
+                if (line.find("jab tak ") == 0) {
+
+                    size_t conditionStart = line.find("jab tak ") + 8;
+                    size_t conditionEnd = line.find("{");
+
+                    // this extracts condition
+                    string condition = trim(
+                        line.substr(conditionStart, conditionEnd - conditionStart)
+                    );
+
+                    // Save the loop body so it can run again.
+                    vector<string> loopBody;
+
+                    while (getline(MyFile, line)) {
+
+                        if (trim(line) == "}") {
+                            break;
+                        }
+
+                        loopBody.push_back(line);
+                    }
+
+                    // Check the condition before every iteration.
+                    while (evaluateCondition(condition, variables)) {
+
+                        for (string currentLine : loopBody) {
+
+                            currentLine = trim(currentLine);
+
+                            if (currentLine.find("bol ") == 0) {
+                                executeBol(currentLine, variables);
+                            }
+                            else if (currentLine.find("maanlo ") == 0) {
+                                executeMaanlo(currentLine, variables);
+                            }
+                        }
+                    }
+                }
+
                 // Conditional execution starts with "agar ... {" and optional "warna" branch.
                 if (line.find("agar ") == 0) {
                     size_t conditionStart = line.find("agar ") + 5;
