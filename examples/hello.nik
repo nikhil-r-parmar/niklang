@@ -90,3 +90,10 @@ jab tak number > 0 {
     bol "Number: " + number
     maanlo number = number - 1
 }
+
+maanlo count = 1
+
+jab tak count <= 3 {
+    bol "Safety Test: " + count
+    maanlo count = count + 1
+}
