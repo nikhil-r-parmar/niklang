@@ -152,8 +152,8 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
             string varValue = line.substr(varValueStart+2);
             // cout << "[" << varValue << "]" << endl; // temerory debugging block
             
-            // checking if varvalue string is empty or not
-            if (!varValue.empty()) {
+            // checking if varvalue string is empty or not and contains quotes at end or front
+            if (!varValue.empty() && varValue.font() == '"' && varValue.back() == '"') {
 
                 // removes extra quotes from string
                 varValue = varValue.substr(1, varValue.length() - 2);
