@@ -81,3 +81,12 @@ maanlo total = next * 2
 
 bol "Next: " + next
 bol "Total: " + total
+
+maanlo count = 1
+
+maanlo number = 5
+
+jab tak number > 0 {
+    bol "Number: " + number
+    maanlo number = number - 1
+}
