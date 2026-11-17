@@ -122,6 +122,97 @@
         }
     }
 
+void executeMaanlo(const string& line, map<string, string>& variables) {
+    if(line.find("maanlo ") == 0) {
+
+            bool calculationSuccessful = true;
+            int varNameStart = line.find(" ");
+            int varNameEnd = line.find(" =", varNameStart+1);
+            string varName = line.substr(varNameStart+1, (varNameEnd-varNameStart-1));
+            // cout << varName << endl;
+
+            int varValueStart = line.find("= ");
+            string varValue = line.substr(varValueStart+2);
+            // cout << varValue << endl;
+
+        if (varValue.find("puch(") != string::npos) {
+
+            int firstQuote = varValue.find('"');
+            int secondQuote = varValue.find('"', firstQuote+1);
+
+            string final = varValue.substr(firstQuote+1, secondQuote-firstQuote-1);
+
+            cout << final;
+
+            string userInput;
+            getline(cin, userInput);
+                        
+            varValue = userInput;
+        }
+
+        bool varValueExists = variableExists(variables, varValue);
+
+        if (varValueExists) {
+            varValue = variables[varValue];
+        }
+                    
+        size_t position = findOperator(varValue);
+        if (position != string::npos) {
+            pair<string, string> operands = splitExpression(varValue);
+
+            string leftSide = operands.first;
+            string rightSide = operands.second;
+            char operation = varValue[position];
+
+            bool leftExists = variableExists(variables, leftSide);
+            bool rightExists = variableExists(variables, rightSide);
+
+            if(!leftExists) {
+                cout << "NIKLANG ERROR: variable '" + leftSide + "' is not defined!" << endl;
+                calculationSuccessful = false;
+            }
+
+            if(!rightExists) {
+                cout << "NIKLANG ERROR: variable '" + rightSide + "' is not defined!" << endl;
+                calculationSuccessful = false;
+            }
+
+            if (leftExists && rightExists) {
+                try {
+                        double leftNumber = stod(variables[leftSide]);
+                        double rightNumber = stod(variables[rightSide]);
+
+                    if (operation == '/' && rightNumber == 0) {
+
+                        cout << "NIKLANG ERROR: Cannot devide by zero." << endl;
+                        calculationSuccessful = false;
+                    } else {
+
+                        double result = calculate(leftNumber, rightNumber, operation);
+
+                        varValue = to_string(result);
+                        calculationSuccessful = true;
+                    }
+
+                } catch (const invalid_argument& e) {
+
+                    cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                    calculationSuccessful = false;
+
+                } catch (const out_of_range& o) {
+                    cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                    calculationSuccessful = false;
+
+                }
+            }
+
+        }
+        if (calculationSuccessful) {
+            variables[varName] = varValue;
+        }
+    }
+}
+
     int main () {
         
         map<string, string> variables;
@@ -175,93 +266,8 @@
                     }
                 }
 
-                if(line.find("maanlo ") == 0) {
-
-                    bool calculationSuccessful = true;
-                    int varNameStart = line.find(" ");
-                    int varNameEnd = line.find(" =", varNameStart+1);
-                    string varName = line.substr(varNameStart+1, (varNameEnd-varNameStart-1));
-                    // cout << varName << endl;
-
-                    int varValueStart = line.find("= ");
-                    string varValue = line.substr(varValueStart+2);
-                    // cout << varValue << endl;
-
-                    if (varValue.find("puch(") != string::npos) {
-
-                        int firstQuote = varValue.find('"');
-                        int secondQuote = varValue.find('"', firstQuote+1);
-
-                        string final = varValue.substr(firstQuote+1, secondQuote-firstQuote-1);
-
-                        cout << final;
-
-                        string userInput;
-                        getline(cin, userInput);
-                        
-                        varValue = userInput;
-                    }
-
-                    bool varValueExists = variableExists(variables, varValue);
-
-                    if (varValueExists) {
-                        varValue = variables[varValue];
-                    }
-                    
-                    size_t position = findOperator(varValue);
-                        if (position != string::npos) {
-                            pair<string, string> operands = splitExpression(varValue);
-
-                            string leftSide = operands.first;
-                            string rightSide = operands.second;
-                            char operation = varValue[position];
-
-                            bool leftExists = variableExists(variables, leftSide);
-                            bool rightExists = variableExists(variables, rightSide);
-
-                            if(!leftExists) {
-                                cout << "NIKLANG ERROR: variable '" + leftSide + "' is not defined!" << endl;
-                                calculationSuccessful = false;
-                            }
-
-                            if(!rightExists) {
-                                cout << "NIKLANG ERROR: variable '" + rightSide + "' is not defined!" << endl;
-                                calculationSuccessful = false;
-                            }
-
-                            if (leftExists && rightExists) {
-                                try {
-                                    double leftNumber = stod(variables[leftSide]);
-                                    double rightNumber = stod(variables[rightSide]);
-
-                                    if (operation == '/' && rightNumber == 0) {
-
-                                        cout << "NIKLANG ERROR: Cannot devide by zero." << endl;
-                                        calculationSuccessful = false;
-                                    } else {
-
-                                        double result = calculate(leftNumber, rightNumber, operation);
-
-                                        varValue = to_string(result);
-                                        calculationSuccessful = true;
-                                    }
-
-                                } catch (const invalid_argument& e) {
-
-                                    cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
-                                    calculationSuccessful = false;
-
-                                } catch (const out_of_range& o) {
-                                    cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
-                                    calculationSuccessful = false;
-
-                                }
-                            }
-
-                        }
-                    if (calculationSuccessful) {
-                        variables[varName] = varValue;
-                    }
+                if (line.find("maanlo ") == 0) {
+                    executeMaanlo(line, variables);
                 }
 
                 if (line.find("agar ") == 0) {

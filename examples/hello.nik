@@ -69,3 +69,8 @@ agar 10 >= 10 {
 agar 10 <= 10 {
     bol "Less equal works"
 }
+
+maanlo a = 10
+maanlo b = 20
+maanlo total = a + b
+bol "Total: " + total
