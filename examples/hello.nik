@@ -1,13 +1,71 @@
-include "nicky_p"
 
-bol "Hello NIKLANG!"
-
-maanlo marks = 20
-
-maanlo marks = 20
-
+# TEST 1: Non-numeric left operand
+maanlo marks = hello
 agar marks >= 35 {
     bol "PASS"
 } warna {
     bol "FAIL"
+}
+
+# TEST 2: Non-numeric right operand
+maanlo age = 20
+agar age > hello {
+    bol "Adult"
+} warna {
+    bol "Minor"
+}
+
+# TEST 3: Undefined left variable
+agar unknown >= 35 {
+    bol "PASS"
+} warna {
+    bol "FAIL"
+}
+
+# TEST 4: Undefined right variable
+maanlo score = 80
+agar score >= cutoff {
+    bol "PASS"
+} warna {
+    bol "FAIL"
+}
+
+# TEST 5: Decimal comparison
+maanlo price = 99.5
+agar price > 50.5 {
+    bol "Correct decimal"
+} warna {
+    bol "Wrong decimal"
+}
+
+# TEST 6: Negative number comparison
+maanlo temperature = -10
+agar temperature < 0 {
+    bol "Below zero"
+} warna {
+    bol "Above zero"
+}
+
+# TEST 7: Equal comparison
+agar 10 == 10 {
+    bol "Equal"
+} warna {
+    bol "Not equal"
+}
+
+# TEST 8: Not equal comparison
+agar 10 != 20 {
+    bol "Not equal condition works"
+} warna {
+    bol "Wrong"
+}
+
+# TEST 9: Greater than or equal
+agar 10 >= 10 {
+    bol "Greater equal works"
+}
+
+# TEST 10: Less than or equal
+agar 10 <= 10 {
+    bol "Less equal works"
 }
