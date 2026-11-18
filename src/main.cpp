@@ -120,7 +120,8 @@ void executeBol(const string& line, map<string, string>& variables) {
             int variableEnd = line.find_last_not_of(" ");  
 
             // extracts parts of both side's string of +
-            int bolPos = ("bol ").length();
+            string bol = "bol ";
+            int bolPos = bol.length();
             string leftPart = trim(line.substr(bolPos, plusPos-bolPos));
             string rightPart = trim(line.substr(plusPos+1));
 
@@ -134,7 +135,9 @@ void executeBol(const string& line, map<string, string>& variables) {
                 // combined both into result
                 string result = leftValue + rightValue;
 
-            }
+                cout << result << endl;
+
+            } else {
 
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
@@ -147,7 +150,9 @@ void executeBol(const string& line, map<string, string>& variables) {
                 cout << "NIKLANG ERROR : variable '" << variableName << "' is not defined!" << endl;
             }
 
-        } else {
+        } 
+    }
+    else {
             cout << final << endl;
         }
     }
@@ -171,7 +176,7 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
             // cout << "[" << varValue << "]" << endl; // temerory debugging block
             
             // checking if varvalue string is empty or not and contains quotes at end or front
-            if (!varValue.empty() && varValue.font() == '"' && varValue.back() == '"') {
+            if (!varValue.empty() && varValue.front() == '"' && varValue.back() == '"') {
 
                 // removes extra quotes from string
                 varValue = varValue.substr(1, varValue.length() - 2);

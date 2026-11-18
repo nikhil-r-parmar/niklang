@@ -173,3 +173,13 @@ bol "ALL LOOP TESTS COMPLETED"
 
 
 maanlo name = "Nikhil"
+
+maanlo first = "Hello"
+maanlo second = "Nikhil"
+
+bol first + second
+
+maanlo name = "Nikhil"
+maanlo age = 18
+
+bol name + age
