@@ -131,7 +131,8 @@ void executeBol(const string& line, map<string, string>& variables) {
                 
                 // extracted values of both sides
                 string leftValue = variables[leftPart];
-                string rightValue = variables[rightPart];
+                // string rightValue = variables[rightPart];
+                string rightValue = rightPart;
 
                 // removes quotes from rightValue
                 rightValue = rightValue.substr(1, rightValue.length() - 2);
