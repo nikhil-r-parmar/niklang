@@ -109,6 +109,21 @@ bool compareValues(double leftValue, double rightValue, const string& operation)
 // the language's output statement.
 void executeBol(const string& line, map<string, string>& variables) {
 
+        // extracts value safely if quotes not exists and direct variable
+        if(line.find('"') == string::npos) {
+            string bol = "bol ";
+            string text = trim(line.substr(bol.length()));
+            if (variableExists(variables, text)){
+                string final = variables[text];
+
+            } else {
+                cout << text << endl;
+
+            }
+            return;
+
+        } else {
+
         int firstQuote = line.find('"');
         int secondQuote = line.find('"',firstQuote + 1);
 
@@ -161,6 +176,7 @@ void executeBol(const string& line, map<string, string>& variables) {
             cout << final << endl;
         }
     }
+}
 
 // isNumeric is defined below; this declaration lets executeMaanlo use it.
 bool isNumeric(const string& value);
