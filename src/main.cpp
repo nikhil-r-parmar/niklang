@@ -118,6 +118,11 @@ void executeBol(const string& line, map<string, string>& variables) {
             int plusPos = line.find("+");
             int variableStart = line.find_first_not_of(" ", plusPos+1);
             int variableEnd = line.find_last_not_of(" ");  
+
+            // extracts parts of both side's string
+            string leftPart = line.substr(" ", pusPos);
+            string rightPart = line.substr();
+
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
             bool variableFound = variableExists(variables, variableName);
