@@ -126,7 +126,7 @@ void executeBol(const string& line, map<string, string>& variables) {
             string rightPart = trim(line.substr(plusPos+1));
 
             // checked whether both string parts exists or not 
-            if(variableExists(variables, leftPart) && (rightPart.front() == '"' && rightPart.back() == '"')) {
+            if(!rightPart.empty() && variableExists(variables, leftPart) && (rightPart.front() == '"' && rightPart.back() == '"')) {
 
                 
                 // extracted values of both sides
