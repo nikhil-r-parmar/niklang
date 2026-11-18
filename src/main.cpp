@@ -131,6 +131,9 @@ void executeBol(const string& line, map<string, string>& variables) {
                 string leftValue = variables[leftPart];
                 string rightValue = variables[rightPart];
 
+                // combined both into result
+                string result = leftValue + rightValue;
+
             }
 
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
