@@ -128,6 +128,12 @@ void executeBol(const string& line, map<string, string>& variables) {
         int firstQuote = line.find('"');
         int secondQuote = line.find('"',firstQuote + 1);
 
+        // prints error message if second quote not exists
+        if(secondQuote == string::npos) {
+            cout << "NIKLANG ERROR : missing closing quote!" << endl;
+            return;
+        }
+
         string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
 
         if (line.find("+") != string::npos) {
