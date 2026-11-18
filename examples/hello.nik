@@ -196,3 +196,6 @@ bol name
 bol Unknown
 
 bol "Hello Nikhil
+
+bol first + last
+bol first + age

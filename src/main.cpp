@@ -105,84 +105,98 @@ bool compareValues(double leftValue, double rightValue, const string& operation)
         }
     }
 
-// Prints a literal string and can also append the value of a variable when used in
-// the language's output statement.
+// Prints text, variable values and combines strings or variables.
 void executeBol(const string& line, map<string, string>& variables) {
 
-        // extracts value safely if quotes not exists and direct variable
-        if(line.find('"') == string::npos) {
-            string bol = "bol ";
-            string text = trim(line.substr(bol.length()));
-            if (variableExists(variables, text)){
-                string final = variables[text];
-                cout << final << endl;
+    string bol = "bol ";
+    string content = trim(line.substr(bol.length()));
 
-            } else {
-                cout << text << endl;
+    // Handles output without concatenation
+    if (content.find("+") == string::npos) {
 
+        // Prints a variable's value if it exists
+        if (variableExists(variables, content)) {
+            cout << variables[content] << endl;
+        }
+        // Prints normal text without quotes
+        else if (content.find('"') == string::npos) {
+            cout << content << endl;
+        }
+        // Prints text inside quotes
+        else {
+            int firstQuote = content.find('"');
+            int secondQuote = content.find('"', firstQuote + 1);
+
+            if (secondQuote == string::npos) {
+                cout << "NIKLANG ERROR : missing closing quote!" << endl;
+                return;
             }
-            return;
 
-        } else {
+            string final = content.substr(firstQuote + 1, secondQuote - firstQuote - 1);
+            cout << final << endl;
+        }
 
-        int firstQuote = line.find('"');
-        int secondQuote = line.find('"',firstQuote + 1);
+        return;
+    }
 
-        // prints error message if second quote not exists
-        if(secondQuote == string::npos) {
+    // Extracts both parts of the concatenation
+    int plusPos = content.find("+");
+
+    string leftPart = trim(content.substr(0, plusPos));
+    string rightPart = trim(content.substr(plusPos + 1));
+
+    if (leftPart.empty() || rightPart.empty()) {
+        cout << "NIKLANG ERROR : invalid concatenation!" << endl;
+        return;
+    }
+
+    string leftValue;
+    string rightValue;
+
+    // Gets the value of the left part
+    if (leftPart.front() == '"') {
+
+        if (leftPart.back() != '"') {
             cout << "NIKLANG ERROR : missing closing quote!" << endl;
             return;
         }
 
-        string final = line.substr(firstQuote+1, (secondQuote-firstQuote-1));
+        leftValue = leftPart.substr(1, leftPart.length() - 2);
 
-        if (line.find("+") != string::npos) {
-            int plusPos = line.find("+");
-            int variableStart = line.find_first_not_of(" ", plusPos+1);
-            int variableEnd = line.find_last_not_of(" ");  
+    } else if (variableExists(variables, leftPart)) {
 
-            // extracts parts of both side's string of +
-            string bol = "bol ";
-            int bolPos = bol.length();
-            string leftPart = trim(line.substr(bolPos, plusPos-bolPos));
-            string rightPart = trim(line.substr(plusPos+1));
+        leftValue = variables[leftPart];
 
-            // checked whether both string parts exists or not 
-            if(!rightPart.empty() && variableExists(variables, leftPart) && (rightPart.front() == '"' && rightPart.back() == '"')) {
+    } else {
 
-                
-                // extracted values of both sides
-                string leftValue = variables[leftPart];
-                // string rightValue = variables[rightPart];
-                string rightValue = rightPart;
-
-                // removes quotes from rightValue
-                rightValue = rightValue.substr(1, rightValue.length() - 2);
-
-                // combined both into result
-                string result = leftValue + rightValue;
-
-                cout << result << endl;
-
-            } else {
-
-            string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
-
-            bool variableFound = variableExists(variables, variableName);
-            if (variableFound) {
-                string variableValue = variables[variableName];
-
-                cout << final << variableValue << endl;
-            } else {
-                cout << "NIKLANG ERROR : variable '" << variableName << "' is not defined!" << endl;
-            }
-
-        } 
+        cout << "NIKLANG ERROR : variable '" << leftPart << "' is not defined!" << endl;
+        return;
     }
-    else {
-            cout << final << endl;
+
+    // Gets the value of the right part
+    if (rightPart.front() == '"') {
+
+        if (rightPart.back() != '"') {
+            cout << "NIKLANG ERROR : missing closing quote!" << endl;
+            return;
         }
+
+        rightValue = rightPart.substr(1, rightPart.length() - 2);
+
+    } else if (variableExists(variables, rightPart)) {
+
+        rightValue = variables[rightPart];
+
+    } else {
+
+        cout << "NIKLANG ERROR : variable '" << rightPart << "' is not defined!" << endl;
+        return;
     }
+
+    // Combines both values
+    string result = leftValue + rightValue;
+
+    cout << result << endl;
 }
 
 // isNumeric is defined below; this declaration lets executeMaanlo use it.
