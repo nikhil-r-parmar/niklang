@@ -119,9 +119,10 @@ void executeBol(const string& line, map<string, string>& variables) {
             int variableStart = line.find_first_not_of(" ", plusPos+1);
             int variableEnd = line.find_last_not_of(" ");  
 
-            // extracts parts of both side's string
-            string leftPart = line.substr(" ", pusPos);
-            string rightPart = line.substr();
+            // extracts parts of both side's string of +
+            int bolPos = ("bol ").length();
+            string leftPart = line.substr(bolPos, plusPos-bolPos);
+            string rightPart = line.substr(plusPos+1);
 
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
