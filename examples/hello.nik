@@ -187,3 +187,5 @@ bol name + age
 maanlo name = "Nikhil"
 
 bol "Hello " + name
+maanlo name = "Nikhil"
+bol name + " Parmar"

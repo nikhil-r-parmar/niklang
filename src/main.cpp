@@ -126,11 +126,15 @@ void executeBol(const string& line, map<string, string>& variables) {
             string rightPart = trim(line.substr(plusPos+1));
 
             // checked whether both string parts exists or not 
-            if(variableExists(variables, leftPart) && variableExists(variables, rightPart)) {
+            if(variableExists(variables, leftPart) && (rightPart.front() == '"' && rightPart.back() == '"')) {
+
                 
                 // extracted values of both sides
                 string leftValue = variables[leftPart];
                 string rightValue = variables[rightPart];
+
+                // removes quotes from rightValue
+                rightValue = rightValue.substr(1, rightValue.length() - 2);
 
                 // combined both into result
                 string result = leftValue + rightValue;
