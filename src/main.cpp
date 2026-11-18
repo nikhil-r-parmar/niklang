@@ -124,6 +124,11 @@ void executeBol(const string& line, map<string, string>& variables) {
             string leftPart = trim(line.substr(bolPos, plusPos-bolPos));
             string rightPart = trim(line.substr(plusPos+1));
 
+            // checked whether both string parts exists or not 
+            if(variableExists(variables, leftPart) && variableExists(variables, rightPart)) {
+                
+            }
+
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
             bool variableFound = variableExists(variables, variableName);
