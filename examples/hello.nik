@@ -189,3 +189,8 @@ maanlo name = "Nikhil"
 bol "Hello " + name
 maanlo name = "Nikhil"
 bol name + " Parmar"
+
+bol Hello
+maanlo name = "Nikhil"
+bol name
+bol Unknown

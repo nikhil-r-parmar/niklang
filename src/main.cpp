@@ -115,6 +115,7 @@ void executeBol(const string& line, map<string, string>& variables) {
             string text = trim(line.substr(bol.length()));
             if (variableExists(variables, text)){
                 string final = variables[text];
+                cout << final << endl;
 
             } else {
                 cout << text << endl;
