@@ -199,3 +199,16 @@ bol "Hello Nikhil
 
 bol first + last
 bol first + age
+
+maanlo first = "Nikhil"
+maanlo last = "Parmar"
+maanlo age = 18
+
+bol Hello
+bol first
+bol first + last
+bol first + age
+bol "Hello " + first
+bol first + " Parmar"
+bol "Hello Nikhil"
+bol "Hello Nikhil
