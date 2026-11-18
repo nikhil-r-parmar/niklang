@@ -121,8 +121,8 @@ void executeBol(const string& line, map<string, string>& variables) {
 
             // extracts parts of both side's string of +
             int bolPos = ("bol ").length();
-            string leftPart = line.substr(bolPos, plusPos-bolPos);
-            string rightPart = line.substr(plusPos+1);
+            string leftPart = trim(line.substr(bolPos, plusPos-bolPos));
+            string rightPart = trim(line.substr(plusPos+1));
 
             string variableName = line.substr(variableStart, variableEnd-variableStart + 1);
 
