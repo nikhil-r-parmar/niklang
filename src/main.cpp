@@ -533,7 +533,8 @@ int main()
                 // Stop the loop if it runs too many times.
                 int iterationCount = 0;
 
-                while (evaluateCondition(condition, variables))
+                bool loopConditionValid = true;
+                while (evaluateCondition(condition, variables, loopConditionValid))
                 {
 
                     if (iterationCount >= 1000)
