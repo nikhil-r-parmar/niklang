@@ -446,14 +446,15 @@ bool evaluateCondition(string condition, map<string, string> &variables, bool &v
             throw invalid_argument("Invalid number");
         }
 
-        if (variableExists(variables, rightSide))
-        {
-            rightNumber = stod(variables[rightSide]);
-        }
-        else
-        {
-            rightNumber = stod(rightSide);
-        }
+       string rightValue = variableExists(variables, rightSide) ? variables[rightSide] : rightSide;
+
+size_t rightPosition = 0;
+rightNumber = stod(rightValue, &rightPosition);
+
+if (rightPosition != rightValue.length())
+{
+    throw invalid_argument("Invalid number");
+}
 
         return compareValues(leftNumber, rightNumber, operation);
     }
