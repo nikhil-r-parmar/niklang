@@ -212,3 +212,9 @@ bol "Hello " + first
 bol first + " Parmar"
 bol "Hello Nikhil"
 bol "Hello Nikhil
+
+agar 10 > 5
+agar 5 > 10
+x = "hello"
+agar x > 5
+agar 999999999999999999999999999999999999999999 > 5

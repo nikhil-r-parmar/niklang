@@ -452,9 +452,15 @@ bool evaluateCondition(string condition, map<string, string> &variables)
 
         return compareValues(leftNumber, rightNumber, operation);
     }
-    catch (...)
+    catch (const invalid_argument &e)
     {
-        cout << "NIKLANG ERROR: Invalid condition!" << endl;
+
+        cout << "NIKLANG ERROR: cannot perform arithmetic operation on non-numeric value." << endl;
+        return false;
+    }
+    catch (const out_of_range &o)
+    {
+        cout << "NIKLANG ERROR: this number is too large to perform arithmetic operation." << endl;
         return false;
     }
 }
