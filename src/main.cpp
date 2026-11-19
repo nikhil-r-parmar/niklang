@@ -446,15 +446,15 @@ bool evaluateCondition(string condition, map<string, string> &variables, bool &v
             throw invalid_argument("Invalid number");
         }
 
-       string rightValue = variableExists(variables, rightSide) ? variables[rightSide] : rightSide;
+        string rightValue = variableExists(variables, rightSide) ? variables[rightSide] : rightSide;
 
-size_t rightPosition = 0;
-rightNumber = stod(rightValue, &rightPosition);
+        size_t rightPosition = 0;
+        rightNumber = stod(rightValue, &rightPosition);
 
-if (rightPosition != rightValue.length())
-{
-    throw invalid_argument("Invalid number");
-}
+        if (rightPosition != rightValue.length())
+        {
+            throw invalid_argument("Invalid number");
+        }
 
         return compareValues(leftNumber, rightNumber, operation);
     }
@@ -462,11 +462,13 @@ if (rightPosition != rightValue.length())
     {
 
         cout << "NIKLANG ERROR: cannot perform arithmetic operation on non-numeric value." << endl;
+        valid = false;
         return false;
     }
     catch (const out_of_range &o)
     {
         cout << "NIKLANG ERROR: this number is too large to perform arithmetic operation." << endl;
+        valid = false;
         return false;
     }
 }
