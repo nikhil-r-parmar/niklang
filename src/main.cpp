@@ -567,7 +567,6 @@ int main()
                 bool executeWarnaBlock = !conditionResult;
 
                 // Only execute the matching branch when the condition is valid.
-                if (calculationSuccessful)
                 {
 
                     bool warnaFound = false;
