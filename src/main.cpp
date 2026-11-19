@@ -570,7 +570,8 @@ int main()
 
                 string condition = line.substr(conditionStart, conditionEnd - conditionStart);
 
-                bool conditionResult = evaluateCondition(condition, variables);
+                bool conditionValid = true;
+                bool conditionResult = evaluateCondition(condition, variables, conditionValid);
 
                 bool executeAgarBlock = conditionResult;
                 bool executeWarnaBlock = !conditionResult;
