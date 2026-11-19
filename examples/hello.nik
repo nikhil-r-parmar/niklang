@@ -218,3 +218,30 @@ agar 5 > 10
 x = "hello"
 agar x > 5
 agar 999999999999999999999999999999999999999999 > 5
+
+bol "TEST 1: TRUE CONDITION"
+agar 10 > 5 {
+    bol "TRUE TEST PASSED"
+}
+
+bol "TEST 2: FALSE CONDITION"
+agar 5 > 10 {
+    bol "ERROR: TRUE branch executed"
+} warna {
+    bol "FALSE TEST PASSED"
+}
+
+bol "TEST 3: NON-NUMERIC VALUE"
+maanlo x = "hello"
+agar x > 5 {
+    bol "ERROR: Invalid condition accepted"
+} warna {
+    bol "ERROR: Invalid condition accepted"
+}
+
+bol "TEST 4: NUMBER TOO LARGE"
+agar 999999999999999999999999999999999999999999 > 5 {
+    bol "ERROR: Large number accepted"
+} warna {
+    bol "ERROR: Large number accepted"
+}
