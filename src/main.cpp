@@ -561,93 +561,10 @@ int main()
 
                 string condition = line.substr(conditionStart, conditionEnd - conditionStart);
 
-                string comparisonOperator;
-                size_t operatorPosition = string::npos;
+                bool conditionResult = evaluateCondition(condition, variables);
 
-                // Check two-character comparison operators before single-character ones.
-                if (condition.find(">=") != string::npos)
-                {
-                    comparisonOperator = ">=";
-                    operatorPosition = condition.find(">=");
-                }
-                else if (condition.find("<=") != string::npos)
-                {
-                    comparisonOperator = "<=";
-                    operatorPosition = condition.find("<=");
-                }
-                else if (condition.find("==") != string::npos)
-                {
-                    comparisonOperator = "==";
-                    operatorPosition = condition.find("==");
-                }
-                else if (condition.find("!=") != string::npos)
-                {
-                    comparisonOperator = "!=";
-                    operatorPosition = condition.find("!=");
-                }
-                else if (condition.find(">") != string::npos)
-                {
-                    comparisonOperator = ">";
-                    operatorPosition = condition.find(">");
-                }
-                else if (condition.find("<") != string::npos)
-                {
-                    comparisonOperator = "<";
-                    operatorPosition = condition.find("<");
-                }
-                else
-                {
-                    cout << "NIKLANG ERROR: Invalid Comparison Operator!" << endl;
-                }
-
-                string leftSide = trim(condition.substr(0, operatorPosition));
-                string rightSide = trim(condition.substr(operatorPosition + comparisonOperator.length(), condition.length() - (operatorPosition + comparisonOperator.length())));
-
-                double leftNumber = 0;
-                double rightNumber = 0;
-                bool conditionResult = false;
-                bool calculationSuccessful = true;
-
-                try
-                {
-                    if (variableExists(variables, leftSide))
-                    {
-                        leftNumber = stod(variables[leftSide]);
-                    }
-                    else
-                    {
-                        leftNumber = stod(leftSide);
-                    }
-
-                    if (variableExists(variables, rightSide))
-                    {
-                        rightNumber = stod(variables[rightSide]);
-                    }
-                    else
-                    {
-                        rightNumber = stod(rightSide);
-                    }
-
-                    if (calculationSuccessful)
-                    {
-                        conditionResult = compareValues(
-                            leftNumber, rightNumber, comparisonOperator);
-                    }
-                }
-                catch (const invalid_argument &e)
-                {
-
-                    cout << "NIKLANG ERROR: cannot perform arithmetic operation on non-numeric value." << endl;
-                    calculationSuccessful = false;
-                }
-                catch (const out_of_range &o)
-                {
-                    cout << "NIKLANG ERROR: this number is too large to perform arithmetic operation." << endl;
-                    calculationSuccessful = false;
-                }
-
-                bool executeAgarBlock = calculationSuccessful && conditionResult;
-                bool executeWarnaBlock = calculationSuccessful && !conditionResult;
+                bool executeAgarBlock = conditionResult;
+                bool executeWarnaBlock = !conditionResult;
 
                 // Only execute the matching branch when the condition is valid.
                 if (calculationSuccessful)
