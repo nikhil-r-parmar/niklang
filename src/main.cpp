@@ -432,16 +432,18 @@ bool evaluateCondition(string condition, map<string, string> &variables, bool &v
 
     try
     {
+
         double leftNumber;
         double rightNumber;
 
-        if (variableExists(variables, leftSide))
+        string leftValue = variableExists(variables, leftSide) ? variables[leftSide] : leftSide;
+
+        size_t leftPosition = 0;
+        leftNumber = stod(leftValue, &leftPosition);
+
+        if (leftPosition != leftValue.length())
         {
-            leftNumber = stod(variables[leftSide]);
-        }
-        else
-        {
-            leftNumber = stod(leftSide);
+            throw invalid_argument("Invalid number");
         }
 
         if (variableExists(variables, rightSide))
