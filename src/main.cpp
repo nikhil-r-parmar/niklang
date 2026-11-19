@@ -386,7 +386,7 @@ bool isNumeric(const string &value)
 }
 
 // Evaluates a condition like "x >= 10" against the current variable values.
-bool evaluateCondition(string condition, map<string, string> &variables)
+bool evaluateCondition(string condition, map<string, string> &variables, bool &valid)
 {
 
     string operation;
