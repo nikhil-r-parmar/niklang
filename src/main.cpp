@@ -285,7 +285,7 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
 
                     if (operation == '/' && rightNumber == 0) {
 
-                        cout << "NIKLANG ERROR: Cannot devide by zero." << endl;
+                        cout << "NIKLANG ERROR: Cannot divide by zero." << endl;
                         calculationSuccessful = false;
                     } else {
 
@@ -297,11 +297,11 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
 
                 } catch (const invalid_argument& e) {
 
-                    cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                    cout << "NIKLANG ERROR: cannot perform arithmetic operation on non-numeric value." << endl;
                     calculationSuccessful = false;
 
                 } catch (const out_of_range& o) {
-                    cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                    cout << "NIKLANG ERROR: this number is too large to perform arithmetic operation." << endl;
                     calculationSuccessful = false;
 
                 }
@@ -464,41 +464,41 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
 
                     string condition = line.substr(conditionStart, conditionEnd-conditionStart);
 
-                    string comparisionOperator;
+                    string comparisonOperator;
                     size_t operatorPosition = string::npos;
 
                     // Check two-character comparison operators before single-character ones.
                     if(condition.find(">=") != string::npos) {
-                        comparisionOperator = ">=";
+                        comparisonOperator = ">=";
                         operatorPosition = condition.find(">=");
 
                     } else if (condition.find("<=") != string::npos) {
-                        comparisionOperator = "<=";
+                        comparisonOperator = "<=";
                         operatorPosition = condition.find("<=");
 
                     } else if (condition.find("==") != string::npos) {
-                        comparisionOperator = "==";
+                        comparisonOperator = "==";
                         operatorPosition = condition.find("==");
 
                     } else if (condition.find("!=") != string::npos) {
-                        comparisionOperator = "!=";
+                        comparisonOperator = "!=";
                         operatorPosition = condition.find("!=");
 
                     } else if (condition.find(">") != string::npos) {
-                        comparisionOperator = ">";
+                        comparisonOperator = ">";
                         operatorPosition = condition.find(">");
 
                     } else if (condition.find("<") != string::npos) {
-                        comparisionOperator = "<";
+                        comparisonOperator = "<";
                         operatorPosition = condition.find("<");
 
                     } else {
-                        cout << "NIKLANG ERROR: Invalid Comparision Operator!" << endl;
+                        cout << "NIKLANG ERROR: Invalid Comparison Operator!" << endl;
 
                     }
 
                     string leftSide = trim(condition.substr(0, operatorPosition));
-                    string rightSide = trim(condition.substr(operatorPosition + comparisionOperator.length(), condition.length() - (operatorPosition + comparisionOperator.length())));
+                    string rightSide = trim(condition.substr(operatorPosition + comparisonOperator.length(), condition.length() - (operatorPosition + comparisonOperator.length())));
 
                     double leftNumber = 0;
                     double rightNumber = 0;
@@ -520,18 +520,18 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
 
                         if (calculationSuccessful) {
                             conditionResult = compareValues(
-                                leftNumber, rightNumber, comparisionOperator
+                                leftNumber, rightNumber, comparisonOperator
                             );
 
                         }
 
                     } catch (const invalid_argument& e) {
 
-                        cout << "NIKLANG ERROR: cannot perform artithmetic operation on non-numeric value." << endl;
+                        cout << "NIKLANG ERROR: cannot perform arithmetic operation on non-numeric value." << endl;
                         calculationSuccessful = false;
 
                     } catch (const out_of_range& o) {
-                        cout << "NIKLANG ERROR: this number is too large to perform artithmetic operation." << endl;
+                        cout << "NIKLANG ERROR: this number is too large to perform arithmetic operation." << endl;
                         calculationSuccessful = false;
 
                     }
