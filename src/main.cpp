@@ -389,6 +389,8 @@ bool isNumeric(const string &value)
 bool evaluateCondition(string condition, map<string, string> &variables, bool &valid)
 {
 
+    valid = true;
+
     string operation;
     size_t position = string::npos;
 
