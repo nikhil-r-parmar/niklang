@@ -577,8 +577,7 @@ int main()
                 bool executeWarnaBlock = !conditionResult;
 
                 // Only execute the matching branch when the condition is valid.
-                {
-
+                if (conditionValid) {
                     bool warnaFound = false;
 
                     while (getline(MyFile, line))
