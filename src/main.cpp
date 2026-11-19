@@ -389,8 +389,6 @@ bool evaluateCondition(string condition, map<string, string>& variables) {
 
         cout << "NIKLANG Interpreter started!" << endl;
 
-        // This variable is kept for historical compatibility with the original code and is not used further.
-        string command = "bol";
 
         // Open the .nik program file from the project root folder.
         ifstream MyFile("./examples/hello.nik");
