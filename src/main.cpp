@@ -421,6 +421,7 @@ bool evaluateCondition(string condition, map<string, string> &variables, bool &v
     else
     {
         cout << "NIKLANG ERROR: Invalid comparison operator!" << endl;
+        valid = false;
         return false;
     }
 
