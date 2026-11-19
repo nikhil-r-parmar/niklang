@@ -211,11 +211,9 @@ void executeMaanlo(const string& line, map<string, string>& variables) {
             int varNameStart = line.find(" ");
             int varNameEnd = line.find(" =", varNameStart+1);
             string varName = line.substr(varNameStart+1, (varNameEnd-varNameStart-1));
-            // cout << varName << endl;
 
             int varValueStart = line.find("= ");
             string varValue = line.substr(varValueStart+2);
-            // cout << "[" << varValue << "]" << endl; // temerory debugging block
             
             // checking if varvalue string is empty or not and contains quotes at end or front
             if (!varValue.empty() && varValue.front() == '"' && varValue.back() == '"') {
