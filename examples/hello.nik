@@ -245,3 +245,11 @@ agar 999999999999999999999999999999999999999999 > 5 {
 } warna {
     bol "ERROR: Large number accepted"
 }
+
+bol "TEST 4: NUMBER TOO LARGE"
+
+agar 1e309 > 5 {
+    bol "ERROR: Large number accepted"
+} warna {
+    bol "ERROR: Invalid condition accepted"
+}
