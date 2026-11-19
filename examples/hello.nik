@@ -1,88 +1,71 @@
 
-# TEST 1: Non-numeric left operand
-maanlo marks = hello
-agar marks >= 35 {
-    bol "PASS"
-} warna {
-    bol "FAIL"
-}
+# =====================================
+# NIKLANG - Official Demo Program
+# =====================================
 
-# TEST 2: Non-numeric right operand
-maanlo age = 20
-agar age > hello {
-    bol "Adult"
-} warna {
-    bol "Minor"
-}
+bol "Welcome to NIKLANG!"
+bol "Custom Hinglish Programming Language"
+bol " "
 
-# TEST 3: Undefined left variable
-agar unknown >= 35 {
-    bol "PASS"
-} warna {
-    bol "FAIL"
-}
+# 1. Variables and strings
 
-# TEST 4: Undefined right variable
-maanlo score = 80
-agar score >= cutoff {
-    bol "PASS"
-} warna {
-    bol "FAIL"
-}
+maanlo name = "Nikhil"
+maanlo age = 18
 
-# TEST 5: Decimal comparison
-maanlo price = 99.5
-agar price > 50.5 {
-    bol "Correct decimal"
-} warna {
-    bol "Wrong decimal"
-}
+bol "1. Variables and Strings"
+bol "Name: " + name
+bol "Age: " + age
 
-# TEST 6: Negative number comparison
-maanlo temperature = -10
-agar temperature < 0 {
-    bol "Below zero"
-} warna {
-    bol "Above zero"
-}
-
-# TEST 7: Equal comparison
-agar 10 == 10 {
-    bol "Equal"
-} warna {
-    bol "Not equal"
-}
-
-# TEST 8: Not equal comparison
-agar 10 != 20 {
-    bol "Not equal condition works"
-} warna {
-    bol "Wrong"
-}
-
-# TEST 9: Greater than or equal
-agar 10 >= 10 {
-    bol "Greater equal works"
-}
-
-# TEST 10: Less than or equal
-agar 10 <= 10 {
-    bol "Less equal works"
-}
+# 2. Arithmetic operations
 
 maanlo a = 10
 maanlo b = 20
 maanlo total = a + b
-bol "Total: " + total
 
-maanlo count = 10
-maanlo next = count + 5
-maanlo total = next * 2
+bol " "
+bol "2. Arithmetic Operations"
+bol "First Number: " + a
+bol "Second Number: " + b
+bol "Addition: " + total
 
-bol "Next: " + next
-bol "Total: " + total
+maanlo next = total / 2
+bol "Division: " + next
+
+# 3. Conditional statements
+
+bol " "
+bol "3. Conditional Statements"
+
+maanlo marks = 85
+
+agar marks >= 35 {
+    bol "Result: PASS"
+} warna {
+    bol "Result: FAIL"
+}
+
+agar marks >= 80 {
+    bol "Grade: Excellent"
+} warna {
+    bol "Grade: Needs Improvement"
+}
+
+# 4. While loop
+
+bol " "
+bol "4. While Loop"
 
 maanlo count = 1
+
+jab tak count <= 5 {
+    bol "Count: " + count
+    maanlo count = count + 1
+}
+
+# 5. Countdown
+
+bol " "
+bol "5. Countdown"
 
 maanlo number = 5
 
@@ -91,165 +74,50 @@ jab tak number > 0 {
     maanlo number = number - 1
 }
 
-maanlo count = 1
+bol "Countdown completed!"
 
-jab tak count <= 3 {
-    bol "Safety Test: " + count
-    maanlo count = count + 1
-}
+# 6. String concatenation
 
-maanlo count = 10
-
-jab tak count < 5 {
-    bol "Loop is running"
-    maanlo count = count + 1
-}
-
-bol "Loop finished"
-
-maanlo score = 10
-
-jab tak score < 30 {
-    maanlo score = score + 5
-    bol "Current Score: " + score
-}
-
-# TEST 1: Condition initially false
-maanlo a = 10
-
-jab tak a < 5 {
-    bol "TEST 1 FAILED"
-}
-
-bol "TEST 1 PASSED"
-
-
-# TEST 2: Variable increment
-maanlo b = 1
-
-jab tak b <= 3 {
-    bol "Increment: " + b
-    maanlo b = b + 1
-}
-
-
-# TEST 3: Variable decrement
-maanlo c = 3
-
-jab tak c > 0 {
-    bol "Decrement: " + c
-    maanlo c = c - 1
-}
-
-
-# TEST 4: Number on left side
-maanlo d = 1
-
-jab tak 5 >= d {
-    bol "Reverse: " + d
-    maanlo d = d + 1
-}
-
-
-# TEST 5: Variable update inside loop
-maanlo e = 10
-
-jab tak e < 25 {
-    maanlo e = e + 5
-    bol "Updated: " + e
-}
-
-
-# TEST 6: Loop runs exactly once
-maanlo f = 1
-
-jab tak f == 1 {
-    bol "One time loop"
-    maanlo f = 2
-}
-
-
-bol "ALL LOOP TESTS COMPLETED"
-
-
-maanlo name = "Nikhil"
+bol " "
+bol "6. String Concatenation"
 
 maanlo first = "Hello"
 maanlo second = "Nikhil"
 
 bol first + second
+bol "Hello " + second
 
-maanlo name = "Nikhil"
-maanlo age = 18
+maanlo surname = "Parmar"
+bol name + surname
 
-bol name + age
+# 7. Comparison operators
 
-maanlo name = "Nikhil"
+bol " "
+bol "7. Comparison Operators"
 
-bol "Hello " + name
-maanlo name = "Nikhil"
-bol name + " Parmar"
-
-bol Hello
-maanlo name = "Nikhil"
-bol name
-bol Unknown
-
-bol "Hello Nikhil
-
-bol first + last
-bol first + age
-
-maanlo first = "Nikhil"
-maanlo last = "Parmar"
-maanlo age = 18
-
-bol Hello
-bol first
-bol first + last
-bol first + age
-bol "Hello " + first
-bol first + " Parmar"
-bol "Hello Nikhil"
-bol "Hello Nikhil
-
-agar 10 > 5
-agar 5 > 10
-x = "hello"
-agar x > 5
-agar 999999999999999999999999999999999999999999 > 5
-
-bol "TEST 1: TRUE CONDITION"
 agar 10 > 5 {
-    bol "TRUE TEST PASSED"
+    bol "Greater than works"
 }
 
-bol "TEST 2: FALSE CONDITION"
-agar 5 > 10 {
-    bol "ERROR: TRUE branch executed"
-} warna {
-    bol "FALSE TEST PASSED"
+agar 10 == 10 {
+    bol "Equal comparison works"
 }
 
-bol "TEST 3: NON-NUMERIC VALUE"
-maanlo x = "hello"
-agar x > 5 {
-    bol "ERROR: Invalid condition accepted"
-} warna {
-    bol "ERROR: Invalid condition accepted"
+agar 10 != 20 {
+    bol "Not equal comparison works"
 }
 
-bol "TEST 4: NUMBER TOO LARGE"
-agar 999999999999999999999999999999999999999999 > 5 {
-    bol "ERROR: Large number accepted"
-} warna {
-    bol "ERROR: Large number accepted"
+agar 10 <= 10 {
+    bol "Less than or equal works"
 }
 
-bol "TEST 4: NUMBER TOO LARGE"
-
-agar 1e309 > 5 {
-    bol "ERROR: Large number accepted"
-} warna {
-    bol "ERROR: Invalid condition accepted"
+agar 10 >= 10 {
+    bol "Greater than or equal works"
 }
+
+# =====================================
+# END OF NIKLANG DEMO
+# =====================================
+
+bol " "
+bol "NIKLANG DEMO COMPLETED!"
